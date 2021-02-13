@@ -1,13 +1,15 @@
 import React from 'react';
 import TBR from './TBR.jsx';
 
-const Bookshelf = ({allBooks}) => {
+const Bookshelf = ({allBooks, changeView}) => {
   //Currently Reading Shelf
   let currentBooks = allBooks.filter(book => book.status === 'Currently Reading');
   let currentShelf = <></>;
   if (currentBooks.length === 0) {
     currentShelf = <div className="current-shelf">
-      Not reading any books currently
+      <div className="shelf-message">
+        <p>No books marked as "currently reading"</p>
+      </div>
     </div>
   } else {
     currentShelf = <div className="current-shelf">
@@ -20,7 +22,9 @@ const Bookshelf = ({allBooks}) => {
   let readShelf = <></>;
   if (readBooks.length === 0) {
     readShelf = <div className="read-shelf">
-      No books marked as finished
+      <div className="shelf-message">
+        <p>No books marked as "finished"</p>
+      </div>
     </div>
   } else {
     readShelf = <div className="read-shelf">
@@ -30,14 +34,15 @@ const Bookshelf = ({allBooks}) => {
 
   // TBR Shelf
   let tbrBooks = allBooks.filter(book => book.status === 'To Be Read');
-  console.log(tbrBooks);
   let tbrShelf = <></>;
   if (tbrBooks.length === 0) {
-    tbrShelf = <div className="tbrshelf">
-      Have not added any books yet
+    tbrShelf = <div className="tbr-shelf">
+      <div className="shelf-message">
+        <p>No books added to shelf</p>
+      </div>
     </div>
   } else {
-    tbrShelf = <div className="tbrshelf">
+    tbrShelf = <div className="tbr-shelf">
       {tbrBooks.slice(0, 5).map((book, i) =>
         <div className="shelf-cover" key={i}><img src={book.cover}></img></div>
       )}
@@ -49,7 +54,9 @@ const Bookshelf = ({allBooks}) => {
   let dnfShelf = <></>
   if (dnfBooks.length === 0) {
     dnfShelf = <div className="dnf-shelf">
-      Have not marked any books as did not finish
+      <div className="shelf-message">
+        <p>No books marked as "did not finish"</p>
+      </div>
     </div>
   } else {
     dnfShelf = <div className="dnf-shelf">
@@ -63,33 +70,28 @@ const Bookshelf = ({allBooks}) => {
     <>
     <h2>Bookshelf</h2>
     <div className="bookshelf">
-      <div className="currently-reading shelf">
+      <div className="shelf">
         <h3>Currently Reading</h3>
-        <div className="recent-books">
           {currentShelf}
-        </div>
         <button>See More</button>
       </div>
-      <div className="read shelf">
+      <div className="shelf">
         <h3>Read</h3>
-        <div className="recent-books">
           {readShelf}
-        </div>
         <button>See More</button>
       </div>
-      <div className="tbr shelf">
+      <div className="shelf">
         <h3>To Be Read</h3>
-        <div className="recent-books">
           {tbrShelf}
-        </div>
-        <button>See More</button>
+        <button
+          onClick={() => changeView('tbr')}
+        >See More</button>
       </div>
-      <div className="dnf shelf">
+      <div className="shelf">
         <h3>Did Not Finish</h3>
-        <div className="recent-books">
           {dnfShelf}
-        </div>
-        <button>See More</button>
+        <button
+        >See More</button>
       </div>
     </div>
     </>

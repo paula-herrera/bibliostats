@@ -15,7 +15,12 @@ class App extends React.Component {
 
     this.getAllBooks = this.getAllBooks.bind(this);
     this.searchBooks = this.searchBooks.bind(this);
-    this.addBook = this.addBook.bind(this)
+    this.addBook = this.addBook.bind(this);
+    this.changeView = this.changeView.bind(this);
+  }
+
+  changeView(view) {
+    this.setState({view: view})
   }
 
   getAllBooks() {
@@ -60,6 +65,7 @@ class App extends React.Component {
     if (this.state.view === 'bookshelf') {
       view = <Bookshelf
               allBooks={this.state.allBooks}
+              changeView={this.changeView}
             />
     }
     if (this.state.view === 'addABook') {
@@ -69,14 +75,17 @@ class App extends React.Component {
               addBook={this.addBook}
             />
     }
+    if (this.state.view === 'tbr') {
+      view = <TBR />
+    }
     return (
       <div className="main">
         <div className="header">
           <h1 className="logo">BiblioStats</h1>
           <div className="nav">
-            <div className="bookshelf-nav" onClick={() => this.setState({view: 'bookshelf'})}>Bookshelf</div>
+            <div className="bookshelf-nav" onClick={() => this.changeView('bookshelf')}>Bookshelf</div>
             <div className="stats-nav">Stats</div>
-            <div className="add-book-nav" onClick={() => this.setState({view: 'addABook'})}>Add A Book</div>
+            <div className="add-book-nav" onClick={() => this.changeView('addABook')}>Add A Book</div>
           </div>
         </div>
         {view}
