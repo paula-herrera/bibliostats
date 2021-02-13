@@ -78,3 +78,17 @@ Bookshelf
   border-radius: 8px;
   margin: 0 0 50px 0;
 }
+
+
+/*
+=====================
+Add A Book
+=====================
+*/
+
+.searchResults {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}

@@ -1,4 +1,5 @@
 import React from 'react';
+import SearchResults from './SearchResults.jsx';
 
 class AddABook extends React.Component {
   constructor(props) {
@@ -35,6 +36,9 @@ class AddABook extends React.Component {
               onClick={this.submit}
             >Go!</button>
           </div>
+          <SearchResults
+            searchResults={this.props.searchResults}
+          />
         </div>
       </div>
     )

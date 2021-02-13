@@ -1,11 +1,11 @@
 const express = require('express');
 let router = express.Router();
+const controllers = require('./controller');
 
 router
   .route('/search/:query')
   .get((req, res) => {
-    console.log(req.params.query)
-    res.send('got it');
-  })
+    controllers.searchBooksToAdd(req, res);
+  });
 
 module.exports = router;

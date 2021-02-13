@@ -2,8 +2,9 @@ import React from 'react';
 
 const Bookshelf = () => {
   return (
+    <>
+    <h2>Bookshelf</h2>
     <div className="bookshelf">
-      <h2>Bookshelf</h2>
       <div className="currently-reading shelf">
         <h3>Currently Reading</h3>
         <div className="recent-books">
@@ -33,6 +34,7 @@ const Bookshelf = () => {
         <button>See More</button>
       </div>
     </div>
+    </>
   )
 }
 
