@@ -38,7 +38,7 @@ Once the project moves into development, the press release can be used as a touc
   > Simply sign in, search for a book, add it to your shelf, and get started tracking what you are reading.
 
 ## What Our Customers Have to Say ##
-  > "I love how easy and simpe BiblioStats is!" - A Greatful Customer
+  > "I love how easy and simpe BiblioStats is!" - A Greatful Customer∏
 
 ## Start Tracking Your Reading ##
   > If you're an avid reader, give BiblioStats a try today!
