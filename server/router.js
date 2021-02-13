@@ -3,6 +3,12 @@ let router = express.Router();
 const controllers = require('./controller');
 
 router
+  .route('/getBooks')
+  .get((req, res) => {
+    controllers.getBooks(req, res);
+  })
+
+router
   .route('/search/:query')
   .get((req, res) => {
     controllers.searchBooksToAdd(req, res);

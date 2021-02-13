@@ -2,11 +2,21 @@
 const API_KEY = require('../config/googleBooks');
 const axios = require('axios');
 //connsect to database controllers here
-const addBook = require('../database/controllers/index.js')
+const queries = require('../database/controllers/index.js');
 
 require('../database/index.js');
 
 let controllers = {
+  getBooks: (req, res) => {
+    queries.getAllBooks((err, books) => {
+      if (err) {
+        res.send(err);
+      } else {
+        res.send(books);
+      }
+    })
+  },
+
   searchBooksToAdd: (req, res) => {
     const query = req.params.query.split(' ').join('-');
     axios(`https://www.googleapis.com/books/v1/volumes?q=${query}&key=${API_KEY.API_KEY}`)
@@ -31,11 +41,11 @@ let controllers = {
       notes: '',
       cover: req.body.imageLinks.thumbnail
     };
-    addBook(book, (err, book) => {
+    queries.addBook(book, (err, book) => {
       if (err) {
-        res.send(err)
+        res.send(err);
       } else {
-        res.send(book)
+        res.send(book);
       }
     })
   }
