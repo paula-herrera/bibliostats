@@ -26,6 +26,7 @@ let controllers = {
 
   addBookToShelf: (req, res) => {
     const book = {
+      bookId: req.body.id,
       title: req.body.title,
       authors: req.body.authors,
       publishedDate: req.body.publishedDate,
@@ -39,7 +40,8 @@ let controllers = {
       rating: 0,
       review: '',
       notes: '',
-      cover: req.body.imageLinks.thumbnail
+      cover: req.body.imageLinks.thumbnail,
+      dateAdded: new Date()
     };
     queries.addBook(book, (err, book) => {
       if (err) {

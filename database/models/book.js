@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const bookSchema = mongoose.Schema({
+  bookId: String,
   title: String,
   authors: Array,
   publishedDate: String,
@@ -14,7 +15,8 @@ const bookSchema = mongoose.Schema({
   rating: Number,
   review: String,
   notes: String,
-  cover: String
+  cover: String,
+  dateAdded: Date,
 });
 
 const Book = mongoose.model('Book', bookSchema);
