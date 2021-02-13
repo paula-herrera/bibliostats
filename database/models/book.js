@@ -2,10 +2,10 @@ const mongoose = require('mongoose');
 
 const bookSchema = mongoose.Schema({
   title: String,
-  author: Array[String],
+  authors: Array,
   publishedDate: String,
   pages: Number,
-  genres: Array[String],
+  genres: Array,
   description: String,
   status: String,
   dateStarted: String,
@@ -13,7 +13,8 @@ const bookSchema = mongoose.Schema({
   format: String,
   rating: Number,
   review: String,
-  notes: String
+  notes: String,
+  cover: String
 });
 
 const Book = mongoose.model('Book', bookSchema);
