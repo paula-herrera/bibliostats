@@ -2,12 +2,13 @@ import React from 'react';
 import axios from 'axios';
 import Bookshelf from './Bookshelf.jsx';
 import AddABook from './AddABook.jsx';
+import TBR from './TBR.jsx';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      view: 'addABook',
+      view: 'bookshelf',
       allBooks: [],
       searchResults: [],
     }
@@ -57,7 +58,9 @@ class App extends React.Component {
   render() {
     let view = <div>Test</div>
     if (this.state.view === 'bookshelf') {
-      view = <Bookshelf />
+      view = <Bookshelf
+              allBooks={this.state.allBooks}
+            />
     }
     if (this.state.view === 'addABook') {
       view = <AddABook
