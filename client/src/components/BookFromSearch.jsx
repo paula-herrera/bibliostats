@@ -1,11 +1,14 @@
 import React from 'react';
 
-const BookFromSearch = ({book}) => {
+const BookFromSearch = ({book, addBook}) => {
   return (
     <div className="bookToAdd">
       <div className="col-1">
         <img src={book.volumeInfo.imageLinks.thumbnail}></img>
-        <button>Add To Shelf</button>
+        <button
+          id={book.id}
+          onClick={addBook}
+        >Add To Shelf</button>
       </div>
       <div className="col-2">
         <p>{book.volumeInfo.title}</p>

@@ -1,7 +1,7 @@
 import React from 'react';
 import BookFromSearch from './BookFromSearch.jsx';
 
-const SearchResults = ({searchResults}) => {
+const SearchResults = ({searchResults, addBook}) => {
   let view = <></>
   if (searchResults.length == 0) {
     view = <div className="noResults">Search For Books</div>
@@ -10,7 +10,11 @@ const SearchResults = ({searchResults}) => {
       <div className="results">
 
         {searchResults.map((book, i) =>
-          <BookFromSearch book={book} key={i}/>
+          <BookFromSearch
+            book={book}
+            key={i}
+            addBook={addBook}
+          />
         )}
 
       </div>
