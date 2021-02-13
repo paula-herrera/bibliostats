@@ -8,11 +8,24 @@ class App extends React.Component {
     super(props);
     this.state = {
       view: 'addABook',
+      allBooks: [],
       searchResults: [],
     }
 
+    this.getAllBooks = this.getAllBooks.bind(this);
     this.searchBooks = this.searchBooks.bind(this);
     this.addBook = this.addBook.bind(this)
+  }
+
+  getAllBooks() {
+    axios.get('http://localhost:1313/api/getBooks')
+      .then(results => {
+        this.setState({allBooks: results.data})
+      })
+  }
+
+  componentDidMount() {
+    this.getAllBooks();
   }
 
   searchBooks(query) {
