@@ -13,6 +13,20 @@ h1 {
   font-size: 75px;
 }
 
+h2 {
+  font-family: 'Oranienbaum', serif;
+  color: #403026;
+  font-weight: 400;
+  font-size: 50px;
+}
+
+h3 {
+  font-family: 'Oranienbaum', serif;
+  color: #403026;
+  font-weight: 400;
+  font-size: 30px;
+}
+
 p {
   font-family: 'Noto Sans', sans-serif;
 }
@@ -47,3 +61,20 @@ Header/Navigation
   margin: 0 25px 0 25px;
 }
 
+
+/*
+=====================
+Bookshelf
+=====================
+*/
+.bookshelf h2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.shelf {
+  border: solid 1px #403026;
+  border-radius: 8px;
+  margin: 0 0 50px 0;
+}
