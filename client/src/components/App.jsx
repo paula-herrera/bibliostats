@@ -8,7 +8,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      view: 'bookshelf',
+      view: 'tbr',
       allBooks: [],
       searchResults: [],
     }
@@ -76,7 +76,10 @@ class App extends React.Component {
             />
     }
     if (this.state.view === 'tbr') {
-      view = <TBR />
+      let books = this.state.allBooks.filter(book => book.status === 'To Be Read');
+      view = <TBR
+        books={books}
+      />
     }
     return (
       <div className="main">
