@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import Bookshelf from './Bookshelf.jsx';
 import AddABook from './AddABook.jsx';
 
@@ -13,7 +14,9 @@ class App extends React.Component {
   }
 
   searchBooks(query) {
-    console.log(query);
+    axios.get(`http://localhost:1313/api/search/${query}`)
+      .then(result => console.log(result))
+      .catch(() => console.log('couldn\'t connect'))
   }
 
   render() {
