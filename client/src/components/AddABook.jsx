@@ -38,6 +38,7 @@ class AddABook extends React.Component {
           </div>
           <SearchResults
             searchResults={this.props.searchResults}
+            addBook={this.props.addBook}
           />
         </div>
       </div>

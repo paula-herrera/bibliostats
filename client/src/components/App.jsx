@@ -12,12 +12,32 @@ class App extends React.Component {
     }
 
     this.searchBooks = this.searchBooks.bind(this);
+    this.addBook = this.addBook.bind(this)
   }
 
   searchBooks(query) {
     axios.get(`http://localhost:1313/api/search/${query}`)
       .then(results => this.setState({searchResults: results.data}))
       .catch(() => console.log('couldn\'t search'))
+  }
+
+  addBook(e) {
+    let bookToAdd = {};
+    for (let book of this.state.searchResults) {
+      if (book.id === e.target.id) {
+        bookToAdd = {
+          title: book.volumeInfo.title,
+          authors: book.volumeInfo.authors,
+          publishedDate: book.volumeInfo.publishedDate,
+          pages: book.volumeInfo.pageCount,
+          categories: book.volumeInfo.categories,
+          description: book.volumeInfo.description,
+          imageLinks: book.volumeInfo.imageLinks
+        };
+      }
+    }
+    axios.post('http://localhost:1313/api/addToShelf', bookToAdd)
+
   }
 
   render() {
@@ -29,6 +49,7 @@ class App extends React.Component {
       view = <AddABook
               searchBooks={this.searchBooks}
               searchResults={this.state.searchResults}
+              addBook={this.addBook}
             />
     }
     return (
