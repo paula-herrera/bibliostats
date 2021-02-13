@@ -2,11 +2,11 @@ const Book = require('../models/book.js');
 
 const addBook = (book, cb) => {
   Book.create(book)
-    .then(()=> {
-      cb();
+    .then((book)=> {
+      cb(null, book);
     })
     .catch(err => {
-      cb(err);
+      cb(err, null);
     });
 }
 

@@ -20,7 +20,7 @@ let controllers = {
       authors: req.body.authors,
       publishedDate: req.body.publishedDate,
       pages: req.body.pageCount,
-      genres: req.body.categtores,
+      genres: req.body.categtories,
       description: req.body.description,
       status: 'To Be Read',
       dateStarted: '',
@@ -31,12 +31,11 @@ let controllers = {
       notes: '',
       cover: req.body.imageLinks.thumbnail
     };
-    console.log('controller:', book);
-    addBook(book, (err) => {
+    addBook(book, (err, book) => {
       if (err) {
         res.send(err)
       } else {
-        res.send('added book')
+        res.send(book)
       }
     })
   }
