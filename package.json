@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack -w",
+    "build": "webpack -d --watch",
     "start": "nodemon server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -31,8 +31,6 @@
     "@babel/node": "^7.12.16",
     "@babel/preset-env": "^7.12.16",
     "@babel/preset-react": "^7.12.13",
-    "babel-loader": "^8.2.2",
-    "webpack": "^5.21.2",
-    "webpack-cli": "^4.5.0"
+    "babel-loader": "^8.2.2"
   }
 }

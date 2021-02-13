@@ -1,0 +1,49 @@
+/* font-family: 'Noto Sans', sans-serif;
+font-family: 'Oranienbaum', serif;
+font-family: 'Space Grotesk', sans-serif; */
+
+body {
+  background-color: #F2F2F2;
+}
+
+h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  color: #403026;
+  font-weight: 400;
+  font-size: 75px;
+}
+
+p {
+  font-family: 'Noto Sans', sans-serif;
+}
+
+.main {
+  width: 80%;
+  margin: 0 auto 0 auto;
+}
+
+/*
+=====================
+Header/Navigation
+=====================
+*/
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  font-family: 'Space Grotesk', sans-serif;
+  color: #403026;
+  font-weight: 300;
+  font-size: 30px;
+}
+
+.nav div {
+  margin: 0 25px 0 25px;
+}
+
