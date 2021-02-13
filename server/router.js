@@ -8,4 +8,10 @@ router
     controllers.searchBooksToAdd(req, res);
   });
 
+router
+  .route('/addToShelf')
+  .post((req, res) => {
+    controllers.addBookToShelf(req, res);
+  })
+
 module.exports = router;
