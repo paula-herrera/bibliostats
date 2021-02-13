@@ -68,32 +68,32 @@ const Bookshelf = ({allBooks, changeView}) => {
 
   return (
     <>
-    <h2>Bookshelf</h2>
-    <div className="bookshelf">
-      <div className="shelf">
-        <h3>Currently Reading</h3>
-          {currentShelf}
-        <button>See More</button>
+      <h2>Bookshelf</h2>
+      <div className="bookshelf">
+        <div className="shelf">
+          <h3>Currently Reading</h3>
+            {currentShelf}
+          <button>See More</button>
+        </div>
+        <div className="shelf">
+          <h3>Read</h3>
+            {readShelf}
+          <button>See More</button>
+        </div>
+        <div className="shelf">
+          <h3>To Be Read</h3>
+            {tbrShelf}
+          <button
+            onClick={() => changeView('tbr')}
+          >See More</button>
+        </div>
+        <div className="shelf">
+          <h3>Did Not Finish</h3>
+            {dnfShelf}
+          <button
+          >See More</button>
+        </div>
       </div>
-      <div className="shelf">
-        <h3>Read</h3>
-          {readShelf}
-        <button>See More</button>
-      </div>
-      <div className="shelf">
-        <h3>To Be Read</h3>
-          {tbrShelf}
-        <button
-          onClick={() => changeView('tbr')}
-        >See More</button>
-      </div>
-      <div className="shelf">
-        <h3>Did Not Finish</h3>
-          {dnfShelf}
-        <button
-        >See More</button>
-      </div>
-    </div>
     </>
   )
 }

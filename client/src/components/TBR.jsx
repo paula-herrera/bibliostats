@@ -1,10 +1,18 @@
 import React from 'react';
 
-const TBR = () => {
+const TBR = ({books}) => {
+  console.log(books)
   return (
-    <div className="tbr">
-      TBR WILL GO HERE
-    </div>
+    <>
+      <h2>To Be Read</h2>
+      <div className="tbr">
+        <div className="tbr-books">
+          {books.map((book, i) =>
+            <div className="book-card" key={i}><img src={book.cover}></img></div>
+          )}
+        </div>
+      </div>
+    </>
   )
 }
 
