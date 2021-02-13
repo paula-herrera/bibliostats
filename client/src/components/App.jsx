@@ -39,6 +39,7 @@ class App extends React.Component {
     for (let book of this.state.searchResults) {
       if (book.id === e.target.id) {
         bookToAdd = {
+          id: book.id,
           title: book.volumeInfo.title,
           authors: book.volumeInfo.authors,
           publishedDate: book.volumeInfo.publishedDate,
@@ -50,7 +51,7 @@ class App extends React.Component {
       }
     }
     axios.post('http://localhost:1313/api/addToShelf', bookToAdd)
-
+      .then(() => this.getAllBooks())
   }
 
   render() {
