@@ -34,6 +34,12 @@ const Bookshelf = ({allBooks, changeView}) => {
 
   // TBR Shelf
   let tbrBooks = allBooks.filter(book => book.status === 'To Be Read');
+
+  tbrBooks.sort(function(a,b){
+    return new Date(b.dateAdded) - new Date(a.dateAdded);
+  })
+
+
   let tbrShelf = <></>;
   if (tbrBooks.length === 0) {
     tbrShelf = <div className="tbr-shelf">
