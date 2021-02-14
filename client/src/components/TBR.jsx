@@ -1,14 +1,18 @@
 import React from 'react';
+import BookCard from './BookCard.jsx';
 
 const TBR = ({books}) => {
   console.log(books)
   return (
     <>
-      <h2>To Be Read</h2>
+      <h1>To Be Read</h1>
       <div className="tbr">
         <div className="tbr-books">
           {books.map((book, i) =>
-            <div className="book-card" key={i}><img src={book.cover}></img></div>
+            <BookCard
+              book={book}
+              key={i}
+            />
           )}
         </div>
       </div>

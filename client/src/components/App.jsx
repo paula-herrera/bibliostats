@@ -8,7 +8,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      view: 'tbr',
+      view: 'bookshelf',
       allBooks: [],
       searchResults: [],
     }
@@ -84,7 +84,7 @@ class App extends React.Component {
     return (
       <div className="main">
         <div className="header">
-          <h1 className="logo">BiblioStats</h1>
+          <div className="logo">BiblioStats</div>
           <div className="nav">
             <div className="bookshelf-nav" onClick={() => this.changeView('bookshelf')}>Bookshelf</div>
             <div className="stats-nav">Stats</div>
