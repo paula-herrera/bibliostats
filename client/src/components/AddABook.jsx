@@ -23,7 +23,7 @@ class AddABook extends React.Component {
   render() {
     return (
       <div className="addABook">
-        <h2>Add A Book</h2>
+        <h1>Add A Book</h1>
         <div className="addABookSearch">
           <div className="search">
             <input

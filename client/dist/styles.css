@@ -3,29 +3,31 @@ font-family: 'Oranienbaum', serif;
 font-family: 'Space Grotesk', sans-serif; */
 
 body {
-  background-color: #F2F2F2;
+  background-color: #eeeeee;
   white-space: pre-wrap;
+  color: #303841;
 }
 
 h1 {
-  font-family: 'Space Grotesk', sans-serif;
-  color: #403026;
-  font-weight: 400;
-  font-size: 35px;
-}
-
-h2 {
   font-family: 'Oranienbaum', serif;
-  color: #403026;
   font-weight: 400;
   font-size: 50px;
 }
 
+h2 {
+  font-family: 'Oranienbaum', serif;
+  font-weight: 400;
+  font-size: 35px;
+}
+
 h3 {
   font-family: 'Oranienbaum', serif;
-  color: #403026;
-  font-weight: 400;
-  font-size: 30px;
+  font-size: 25px;
+}
+
+h4 {
+  font-family: 'Oranienbaum', serif;
+  font-size: 18px;
 }
 
 p {
@@ -35,6 +37,26 @@ p {
 button {
   font-family: 'Noto Sans', sans-serif;
   width: 100px;
+  background-color: #ff5722;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 12px;
+  font-size: 16px;
+  font-weight: bold;
+  transition: all 0.25s ease-out;
+}
+
+button:hover {
+  box-shadow: 0px 4px 12px 0px rgba(0,0,0,0.25);
+-webkit-box-shadow: 0px 4px 12px 0px rgba(0,0,0,0.25);
+-moz-box-shadow: 0px 4px 12px 0px rgba(0,0,0,0.25);
+}
+
+img {
+  box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.75);
+  -webkit-box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.75);
 }
 
 .main {
@@ -47,11 +69,20 @@ button {
 Header/Navigation
 =====================
 */
+
 .header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: baseline;
+  margin-bottom: 165px;
+}
+
+.logo {
+  font-family: 'Space Grotesk', sans-serif;
+  color: #403026;
+  font-weight: 400;
+  font-size: 35px;
 }
 
 .nav {
@@ -60,7 +91,7 @@ Header/Navigation
   font-family: 'Space Grotesk', sans-serif;
   color: #403026;
   font-weight: 300;
-  font-size: 24px;
+  font-size: 18px;
 }
 
 .nav div {
@@ -87,7 +118,7 @@ Bookshelf
   padding-bottom: 25px;
 }
 
-.shelf h3 {
+.shelf h2 {
   margin: 25px auto 25px auto;
 }
 
@@ -135,7 +166,6 @@ To Be Read
 .book-card {
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 
@@ -185,3 +215,56 @@ Add A Book
 .bookToAdd button {
   margin-top: 10px;
 }
+
+/*
+=====================
+Book Card
+=====================
+*/
+
+.book-card-inner {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  margin-bottom: 25px;
+  margin-right: 25px;
+  width: auto;
+  background-color: white;
+  border-radius: 8px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  padding: 25px 20px;
+  transition: all 0.25s ease-out;
+}
+
+.book-card-inner:hover {
+  box-shadow: 0px 4px 21px 0px rgba(0,0,0,0.25);
+-webkit-box-shadow: 0px 4px 21px 0px rgba(0,0,0,0.25);
+-moz-box-shadow: 0px 4px 21px 0px rgba(0,0,0,0.25);
+}
+
+.book-card-body {
+  width: 250px;
+  padding-left: 20px;
+}
+
+.book-card h3 {
+  margin-top: 0;
+}
+
+.book-card p {
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.book-card-cover {
+  padding-right: 10px;
+}
+
+.book-card-status {
+  border-left: 6px solid #00adb5;
+  padding-left: 10px;
+  margin-top: 10px;
+}
+
+

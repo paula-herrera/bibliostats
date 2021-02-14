@@ -74,27 +74,27 @@ const Bookshelf = ({allBooks, changeView}) => {
 
   return (
     <>
-      <h2>Bookshelf</h2>
+      <h1>Bookshelf</h1>
       <div className="bookshelf">
         <div className="shelf">
-          <h3>Currently Reading</h3>
+          <h2>Currently Reading</h2>
             {currentShelf}
           <button>See More</button>
         </div>
         <div className="shelf">
-          <h3>Read</h3>
+          <h2>Read</h2>
             {readShelf}
           <button>See More</button>
         </div>
         <div className="shelf">
-          <h3>To Be Read</h3>
+          <h2>To Be Read</h2>
             {tbrShelf}
           <button
             onClick={() => changeView('tbr')}
           >See More</button>
         </div>
         <div className="shelf">
-          <h3>Did Not Finish</h3>
+          <h2>Did Not Finish</h2>
             {dnfShelf}
           <button
           >See More</button>
