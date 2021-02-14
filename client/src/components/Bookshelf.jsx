@@ -1,7 +1,7 @@
 import React from 'react';
 import TBR from './TBR.jsx';
 
-const Bookshelf = ({allBooks, changeView}) => {
+const Bookshelf = ({allBooks, changeView, goToBookPage}) => {
   //Currently Reading Shelf
   let currentBooks = allBooks.filter(book => book.status === 'Currently Reading');
   currentBooks.sort(function(a,b){
@@ -17,7 +17,7 @@ const Bookshelf = ({allBooks, changeView}) => {
   } else {
     currentShelf = <div className="current-shelf">
       {currentBooks.slice(0, 5).map((book, i) =>
-        <div className="shelf-cover" key={i}><img src={book.cover}></img></div>
+        <div className="shelf-cover" key={i} onClick={() => goToBookPage(book)}><img src={book.cover}></img></div>
       )}
     </div>
   }
@@ -37,7 +37,7 @@ const Bookshelf = ({allBooks, changeView}) => {
   } else {
     readShelf = <div className="read-shelf">
       {readBooks.slice(0, 5).map((book, i) =>
-        <div className="shelf-cover" key={i}><img src={book.cover}></img></div>
+        <div className="shelf-cover" key={i} onClick={() => goToBookPage(book)}><img src={book.cover}></img></div>
       )}
     </div>
   }
@@ -58,7 +58,7 @@ const Bookshelf = ({allBooks, changeView}) => {
   } else {
     tbrShelf = <div className="tbr-shelf">
       {tbrBooks.slice(0, 5).map((book, i) =>
-        <div className="shelf-cover" key={i}><img src={book.cover}></img></div>
+        <div className="shelf-cover" key={i} onClick={() => goToBookPage(book)}><img src={book.cover}></img></div>
       )}
     </div>
   }
@@ -78,7 +78,7 @@ const Bookshelf = ({allBooks, changeView}) => {
   } else {
     dnfShelf = <div className="dnf-shelf">
       {dnfBooks.slice(0, 5).map((book, i) =>
-        <div className="shelf-cover" key={i}><img src={book.cover}></img></div>
+        <div className="shelf-cover" key={i} onClick={() => goToBookPage(book)}><img src={book.cover}></img></div>
       )}
     </div>
   }
