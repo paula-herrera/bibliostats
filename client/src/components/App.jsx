@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Bookshelf from './Bookshelf.jsx';
 import AddABook from './AddABook.jsx';
@@ -8,52 +8,39 @@ import TBR from './TBR.jsx';
 import DNF from './TBR.jsx';
 import BookPage from './BookPage.jsx';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      view: 'bookshelf',
-      allBooks: [],
-      searchResults: [],
-      selectedBook: {}
-    }
+const App = () => {
+  const [activeView, setActiveView] = useState('bookshelf');
+  const [allBooks, setAllBooks] = useState([]);
+  const [searchResults, setSearchResults] = useState([]);
+  const [selectedBook, setSelectedBook] = useState({})
 
-    this.getAllBooks = this.getAllBooks.bind(this);
-    this.searchBooks = this.searchBooks.bind(this);
-    this.addBook = this.addBook.bind(this);
-    this.changeView = this.changeView.bind(this);
-    this.goToBookPage = this.goToBookPage.bind(this);
+  useEffect(() => getAllBooks());
+
+  const changeView = (view) => {
+    setActiveView(view)
   }
 
-  changeView(view) {
-    this.setState({view: view})
+  const goToBookPage = (book) => {
+    setSelectedBook(book);
+    changeView('bookPage');
   }
 
-  goToBookPage(book) {
-    this.setState({selectedBook: book});
-    this.changeView('bookPage')
-  }
-
-  getAllBooks() {
+  const getAllBooks = () => {
     axios.get('http://localhost:1313/api/getBooks')
       .then(results => {
-        this.setState({allBooks: results.data})
+        setAllBooks(results.data);
       })
   }
 
-  componentDidMount() {
-    this.getAllBooks();
-  }
-
-  searchBooks(query) {
+  const searchBooks = (query) => {
     axios.get(`http://localhost:1313/api/search/${query}`)
-      .then(results => this.setState({searchResults: results.data}))
+      .then(results => setSearchResults(results.data))
       .catch(() => console.log('couldn\'t search'))
   }
 
-  addBook(e) {
+  const addBook = (e) => {
     let bookToAdd = {};
-    for (let book of this.state.searchResults) {
+    for (let book of searchResults) {
       if (book.id === e.target.id) {
         bookToAdd = {
           id: book.id,
@@ -68,58 +55,55 @@ class App extends React.Component {
       }
     }
     axios.post('http://localhost:1313/api/addToShelf', bookToAdd)
-      .then(() => this.getAllBooks())
+      .then(() => getAllBooks())
   }
 
-  render() {
     let view = <></>
-    if (this.state.view === 'bookshelf') {
+    if (activeView === 'bookshelf') {
       view = <Bookshelf
-              allBooks={this.state.allBooks}
-              changeView={this.changeView}
-              goToBookPage={this.goToBookPage}
+              allBooks={allBooks}
+              changeView={changeView}
+              goToBookPage={goToBookPage}
             />
     }
-    if (this.state.view === 'addABook') {
+    if (activeView === 'addABook') {
       view = <AddABook
-              searchBooks={this.searchBooks}
-              searchResults={this.state.searchResults}
-              addBook={this.addBook}
+              searchBooks={searchBooks}
+              searchResults={searchResults}
+              addBook={addBook}
             />
     }
-    if (this.state.view === 'currentlyReading') {
-      let books = this.state.allBooks.filter(book => book.status === 'Currently Reading');
+    if (activeView === 'currentlyReading') {
+      let books = allBooks.filter(book => book.status === 'Currently Reading');
       view = <CurrentlyReading
         books={books}
-        goToBookPage={this.goToBookPage}
+        goToBookPage={goToBookPage}
       />
     }
-    if (this.state.view === 'read') {
-      let books = this.state.allBooks.filter(book => book.status === 'Read');
+    if (activeView === 'read') {
+      let books = allBooks.filter(book => book.status === 'Read');
       view = <Read
         books={books}
-        goToBookPage={this.goToBookPage}
+        goToBookPage={goToBookPage}
       />
     }
-    if (this.state.view === 'tbr') {
-      let books = this.state.allBooks.filter(book => book.status === 'To Be Read');
+    if (activeView === 'tbr') {
+      let books = allBooks.filter(book => book.status === 'To Be Read');
       view = <TBR
         books={books}
-        goToBookPage={this.goToBookPage}
+        goToBookPage={goToBookPage}
       />
     }
-    if (this.state.view === 'dnf') {
-      let books = this.state.allBooks.filter(book => book.status === 'Did Not Finish');
+    if (activeView === 'dnf') {
+      let books = allBooks.filter(book => book.status === 'Did Not Finish');
       view = <DNF
         books={books}
-        goToBookPage={this.goToBookPage}
+        goToBookPage={goToBookPage}
       />
     }
-
-
-    if (this.state.view === 'bookPage') {
+    if (activeView === 'bookPage') {
       view = <BookPage
-        book={this.state.selectedBook}
+        book={selectedBook}
       />
     }
     return (
@@ -127,15 +111,14 @@ class App extends React.Component {
         <div className="header">
           <div className="logo">BiblioStats</div>
           <div className="nav">
-            <div className="bookshelf-nav" onClick={() => this.changeView('bookshelf')}>Bookshelf</div>
+            <div className="bookshelf-nav" onClick={() => changeView('bookshelf')}>Bookshelf</div>
             <div className="stats-nav">Stats</div>
-            <div className="add-book-nav" onClick={() => this.changeView('addABook')}>Add A Book</div>
+            <div className="add-book-nav" onClick={() => changeView('addABook')}>Add A Book</div>
           </div>
         </div>
         {view}
       </div>
     )
-  }
 }
 
 export default App;
