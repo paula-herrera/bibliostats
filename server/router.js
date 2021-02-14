@@ -26,4 +26,16 @@ router
     controllers.editBookDetails(req, res);
   });
 
+router
+  .route('/editBookReview/:id')
+  .patch((req, res) => {
+    controllers.editBookReview(req, res);
+  });
+
+router
+  .route('/editBookNotes/:id')
+  .patch((req, res) => {
+    controllers.editBookNotes(req, res);
+  });
+
 module.exports = router;

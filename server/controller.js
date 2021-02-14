@@ -67,6 +67,32 @@ let controllers = {
         res.status(201).send('successfully updated');
       }
     })
+  },
+
+  editBookReview: (req, res) => {
+    const update = {
+      review: req.body.review
+    }
+    queries.editBookReview(req.params.id, update, (err, book) => {
+      if (err) {
+        res.status(500).send(err);
+      } else {
+        res.status(201).send('successfully updated');
+      }
+    })
+  },
+
+  editBookNotes: (req, res) => {
+    const update = {
+      rnotes: req.body.notes
+    }
+    queries.editBookNotes(req.params.id, update, (err, book) => {
+      if (err) {
+        res.status(500).send(err);
+      } else {
+        res.status(201).send('successfully updated');
+      }
+    })
   }
 }
 
