@@ -267,4 +267,23 @@ Book Card
   margin-top: 10px;
 }
 
+/*
+=====================
+Book Page
+=====================
+*/
+
+.book-page-body {
+  display: flex;
+  flex-direction: row;
+}
+
+.book-page-cover {
+  padding-right: 20px;
+}
+
+.book-page-status {
+  padding-left: 30px;
+}
+
 

@@ -1,9 +1,12 @@
 import React from 'react';
 
-const BookCard = ({book}) => {
+const BookCard = ({book, goToBookPage}) => {
   return (
     <div className="book-card">
-      <div className="book-card-inner">
+      <div
+        className="book-card-inner"
+        onClick={() => goToBookPage(book)}
+      >
         <div className="book-card-cover">
           <img src={book.cover}></img>
         </div>

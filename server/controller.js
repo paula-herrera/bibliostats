@@ -30,7 +30,7 @@ let controllers = {
       title: req.body.title,
       authors: req.body.authors,
       publishedDate: req.body.publishedDate,
-      pages: req.body.pageCount,
+      pages: req.body.pages,
       genres: req.body.categories,
       description: req.body.description,
       status: 'To Be Read',
