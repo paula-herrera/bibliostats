@@ -1,13 +1,6 @@
 import React from 'react';
 
 const BookFromSearch = ({book, addBook}) => {
-  // let cover = book.volumeInfo.imageLinks.thumbnail;
-  // if (!cover || !book.volumeInfo.imageLinks || !book.volumeInfo.imageLinks.thumbnail) {
-  //   cover = 'https://cdn.bookauthority.org/dist/images/book-cover-not-available.6b5a104fa66be4eec4fd16aebd34fe04.png'
-  // }
-
-  //var cover = book.volumeInfo.imageLinks.thumbnail;
-
   if (book.volumeInfo.imageLinks === undefined) {
     var cover = 'https://cdn.bookauthority.org/dist/images/book-cover-not-available.6b5a104fa66be4eec4fd16aebd34fe04.png';
   } else {
