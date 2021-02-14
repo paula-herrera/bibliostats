@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
+import EditBook from './EditBook.jsx';
 
 const BookPage = ({book}) => {
+  const [show, setShow] = useState(false);
+
   let dateStarted = <></>
   if (book.dateStarted === '') {
     dateStarted = <p>No Start Date</p>
@@ -46,6 +49,8 @@ const BookPage = ({book}) => {
     <p>{book.notes}</p>
   }
 
+
+
   return (
     <>
       <h1>{book.title}</h1>
@@ -63,7 +68,13 @@ const BookPage = ({book}) => {
           <div className="book-page-status">
             <p>Status</p>
             {status}
-            <button>Edit Status</button>
+            <button
+              onClick={() => setShow(true)}
+            >Edit Status</button>
+            <EditBook
+              show={show}
+              onClose={() => setShow(false)}
+            />
           </div>
         </div>
         <div>
