@@ -4,11 +4,10 @@ import BookFromSearch from './BookFromSearch.jsx';
 const SearchResults = ({searchResults, addBook}) => {
   let view = <></>
   if (searchResults.length == 0) {
-    view = <div className="noResults">Search For Books</div>
+    view = <div className="no-results">Search For Books</div>
   } else {
     view =
       <div className="results">
-
         {searchResults.map((book, i) =>
           <BookFromSearch
             book={book}
@@ -16,9 +15,9 @@ const SearchResults = ({searchResults, addBook}) => {
             addBook={addBook}
           />
         )}
-
       </div>
   }
+
   return (
     <div className="searchResults">
       {view}
