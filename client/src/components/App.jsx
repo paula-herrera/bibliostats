@@ -77,6 +77,7 @@ class App extends React.Component {
       view = <Bookshelf
               allBooks={this.state.allBooks}
               changeView={this.changeView}
+              goToBookPage={this.goToBookPage}
             />
     }
     if (this.state.view === 'addABook') {

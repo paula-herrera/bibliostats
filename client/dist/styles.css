@@ -299,19 +299,19 @@ Book Page
   padding-left: 30px;
 }
 
-.edit-book-modal {
+.edit-book-status-modal {
   position: fixed;
   left: 0;
   top: 0;
   right: 0;
   bottom: 0;
-  background-color: rgbs(0 0 0 0.5);
+  background-color: rgbs(0 0 0 0.75);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.modal-content {
+.edit-book-status-modal-content {
   width: 500px;
   background-color: #fff;
 }

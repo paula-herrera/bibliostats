@@ -20,8 +20,8 @@ const EditBook = ({show, onClose}) => {
 
   return (
     <>
-      <div className="edit-book-modal" onClick={onClose}>
-        <div className="modal-content" onClick={e => e.stopPropagation()}>
+      <div className="edit-book-status-modal" onClick={onClose}>
+        <div className="edit-book-status-modal-content" onClick={e => e.stopPropagation()}>
           <div className="modal-header">
             This is the header
           </div>
