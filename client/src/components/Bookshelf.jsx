@@ -92,12 +92,15 @@ const Bookshelf = ({allBooks, changeView}) => {
         <div className="shelf">
           <h2>Currently Reading</h2>
             {currentShelf}
-          <button>See More</button>
+          <button
+            onClick={() => changeView('currentlyReading')}
+          >See More</button>
         </div>
         <div className="shelf">
           <h2>Read</h2>
             {readShelf}
-          <button>See More</button>
+          <button
+          onClick={() => changeView('read')}>See More</button>
         </div>
         <div className="shelf">
           <h2>To Be Read</h2>
@@ -110,6 +113,7 @@ const Bookshelf = ({allBooks, changeView}) => {
           <h2>Did Not Finish</h2>
             {dnfShelf}
           <button
+          onClick={() => changeView('dnf')}
           >See More</button>
         </div>
       </div>

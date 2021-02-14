@@ -2,7 +2,10 @@ import React from 'react';
 import axios from 'axios';
 import Bookshelf from './Bookshelf.jsx';
 import AddABook from './AddABook.jsx';
+import CurrentlyReading from './CurrentlyReading.jsx';
+import Read from './TBR.jsx';
 import TBR from './TBR.jsx';
+import DNF from './TBR.jsx';
 import BookPage from './BookPage.jsx';
 
 class App extends React.Component {
@@ -69,7 +72,7 @@ class App extends React.Component {
   }
 
   render() {
-    let view = <div>Test</div>
+    let view = <></>
     if (this.state.view === 'bookshelf') {
       view = <Bookshelf
               allBooks={this.state.allBooks}
@@ -83,6 +86,20 @@ class App extends React.Component {
               addBook={this.addBook}
             />
     }
+    if (this.state.view === 'currentlyReading') {
+      let books = this.state.allBooks.filter(book => book.status === 'Currently Reading');
+      view = <CurrentlyReading
+        books={books}
+        goToBookPage={this.goToBookPage}
+      />
+    }
+    if (this.state.view === 'read') {
+      let books = this.state.allBooks.filter(book => book.status === 'Read');
+      view = <Read
+        books={books}
+        goToBookPage={this.goToBookPage}
+      />
+    }
     if (this.state.view === 'tbr') {
       let books = this.state.allBooks.filter(book => book.status === 'To Be Read');
       view = <TBR
@@ -90,6 +107,15 @@ class App extends React.Component {
         goToBookPage={this.goToBookPage}
       />
     }
+    if (this.state.view === 'dnf') {
+      let books = this.state.allBooks.filter(book => book.status === 'Did Not Finish');
+      view = <DNF
+        books={books}
+        goToBookPage={this.goToBookPage}
+      />
+    }
+
+
     if (this.state.view === 'bookPage') {
       view = <BookPage
         book={this.state.selectedBook}
