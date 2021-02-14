@@ -49,8 +49,6 @@ const BookPage = ({book}) => {
     <p>{book.notes}</p>
   }
 
-
-
   return (
     <>
       <h1>{book.title}</h1>

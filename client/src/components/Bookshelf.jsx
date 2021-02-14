@@ -83,8 +83,6 @@ const Bookshelf = ({allBooks, changeView, goToBookPage}) => {
     </div>
   }
 
-
-
   return (
     <>
       <h1>Bookshelf</h1>
