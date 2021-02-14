@@ -1,8 +1,7 @@
 import React from 'react';
 import BookCard from './BookCard.jsx';
 
-const TBR = ({books}) => {
-  console.log(books)
+const TBR = ({books, goToBookPage}) => {
   return (
     <>
       <h1>To Be Read</h1>
@@ -12,6 +11,7 @@ const TBR = ({books}) => {
             <BookCard
               book={book}
               key={i}
+              goToBookPage={goToBookPage}
             />
           )}
         </div>
