@@ -1,49 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import SearchResults from './SearchResults.jsx';
 
-class AddABook extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      searchVal: ''
-    }
+const AddABook = ({searchBooks, searchResults, addBook}) => {
+  const [query, setQuery] = useState('');
 
-    this.searchVal = this.searchVal.bind(this);
-    this.submit = this.submit.bind(this);
+  const submit = () => {
+    searchBooks(query);
   }
 
-  searchVal(e) {
-    this.setState({searchVal: e.target.value});
-  }
-
-  submit() {
-    this.props.searchBooks(this.state.searchVal);
-  }
-
-  render() {
-    return (
-      <div className="addABook">
-        <h1>Add A Book</h1>
-        <div className="addABookSearch">
-          <div className="search">
-            <input
-              id="search"
-              type="text"
-              placeholder="Search"
-              onChange={this.searchVal}
-            ></input>
-            <button
-              onClick={this.submit}
-            >Go!</button>
-          </div>
-          <SearchResults
-            searchResults={this.props.searchResults}
-            addBook={this.props.addBook}
-          />
+  return (
+    <div className="addABook">
+      <h1>Add A Book</h1>
+      <div className="addABookSearch">
+        <div className="search">
+          <input
+            id="search"
+            type="text"
+            placeholder="Search"
+            onChange={(e) => setQuery(e.target.value)}
+          ></input>
+          <button
+            onClick={submit}
+          >Go!</button>
         </div>
+        <SearchResults
+          searchResults={searchResults}
+          addBook={addBook}
+        />
       </div>
-    )
-  }
+    </div>
+  )
 }
 
 export default AddABook;
