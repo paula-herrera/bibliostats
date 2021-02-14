@@ -134,7 +134,10 @@ Bookshelf
   margin: 0 auto 0 auto;
 }
 
-.tbr-shelf {
+.current-shelf,
+.read-shelf,
+.tbr-shelf,
+.dnf-shelf {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;

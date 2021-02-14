@@ -4,6 +4,9 @@ import TBR from './TBR.jsx';
 const Bookshelf = ({allBooks, changeView}) => {
   //Currently Reading Shelf
   let currentBooks = allBooks.filter(book => book.status === 'Currently Reading');
+  currentBooks.sort(function(a,b){
+    return new Date(b.dateAdded) - new Date(a.dateAdded);
+  })
   let currentShelf = <></>;
   if (currentBooks.length === 0) {
     currentShelf = <div className="current-shelf">
@@ -13,12 +16,17 @@ const Bookshelf = ({allBooks, changeView}) => {
     </div>
   } else {
     currentShelf = <div className="current-shelf">
-      Books Here
+      {currentBooks.slice(0, 5).map((book, i) =>
+        <div className="shelf-cover" key={i}><img src={book.cover}></img></div>
+      )}
     </div>
   }
 
   //Read Shelf
   let readBooks = allBooks.filter(book => book.status === 'Read');
+  readBooks.sort(function(a,b){
+    return new Date(b.dateAdded) - new Date(a.dateAdded);
+  })
   let readShelf = <></>;
   if (readBooks.length === 0) {
     readShelf = <div className="read-shelf">
@@ -28,17 +36,17 @@ const Bookshelf = ({allBooks, changeView}) => {
     </div>
   } else {
     readShelf = <div className="read-shelf">
-      read books here
+      {readBooks.slice(0, 5).map((book, i) =>
+        <div className="shelf-cover" key={i}><img src={book.cover}></img></div>
+      )}
     </div>
   }
 
   // TBR Shelf
   let tbrBooks = allBooks.filter(book => book.status === 'To Be Read');
-
   tbrBooks.sort(function(a,b){
     return new Date(b.dateAdded) - new Date(a.dateAdded);
   })
-
 
   let tbrShelf = <></>;
   if (tbrBooks.length === 0) {
@@ -57,6 +65,9 @@ const Bookshelf = ({allBooks, changeView}) => {
 
   //DNF Shelf
   let dnfBooks = allBooks.filter(book => book.status === 'Did Not Finish');
+  dnfBooks.sort(function(a,b){
+    return new Date(b.dateAdded) - new Date(a.dateAdded);
+  })
   let dnfShelf = <></>
   if (dnfBooks.length === 0) {
     dnfShelf = <div className="dnf-shelf">
@@ -66,7 +77,9 @@ const Bookshelf = ({allBooks, changeView}) => {
     </div>
   } else {
     dnfShelf = <div className="dnf-shelf">
-      dnf books here
+      {dnfBooks.slice(0, 5).map((book, i) =>
+        <div className="shelf-cover" key={i}><img src={book.cover}></img></div>
+      )}
     </div>
   }
 

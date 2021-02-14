@@ -9,33 +9,10 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      view: 'bookPage',
+      view: 'bookshelf',
       allBooks: [],
       searchResults: [],
-      selectedBook: {
-        "authors": [
-            "Elizabeth Acevedo"
-        ],
-        "genres": [
-            "Young Adult Fiction"
-        ],
-        "_id": "602899be7f9e741934ac8688",
-        "bookId": "42enDwAAQBAJ",
-        "title": "Clap When You Land",
-        "publishedDate": "2020-05-05",
-        "pages": 432,
-        "description": "In a novel-in-verse that brims with grief and love, National Book Award-winning and New York Times bestselling author Elizabeth Acevedo writes about the devastation of loss, the difficulty of forgiveness, and the bittersweet bonds that shape our lives. Camino Rios lives for the summers when her father visits her in the Dominican Republic. But this time, on the day when his plane is supposed to land, Camino arrives at the airport to see crowds of crying people… In New York City, Yahaira Rios is called to the principal’s office, where her mother is waiting to tell her that her father, her hero, has died in a plane crash. Separated by distance—and Papi’s secrets—the two girls are forced to face a new reality in which their father is dead and their lives are forever altered. And then, when it seems like they’ve lost everything of their father, they learn of each other. Great for summer reading or anytime! Clap When You Land is a Today show pick for “25 children’s books your kids and teens won’t be able to put down this summer!\" Plus don't miss Elizabeth Acevedo's The Poet X and With the Fire on High!",
-        "status": "To Be Read",
-        "dateStarted": "",
-        "dateFinished": "",
-        "format": "",
-        "rating": 5,
-        "review": "",
-        "notes": "",
-        "cover": "http://books.google.com/books/content?id=42enDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
-        "dateAdded": "2021-02-14T03:32:14.658Z",
-        "__v": 0
-    }
+      selectedBook: {}
     }
 
     this.getAllBooks = this.getAllBooks.bind(this);
