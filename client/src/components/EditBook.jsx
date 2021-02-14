@@ -1,39 +1,47 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
-const EditBook = ({show, onClose}) => {
+const EditBook = ({book, show, onClose}) => {
   if (!show) {
     return null;
   }
 
-  const closeOnEscapeKeyDown = (e) => {
-    if ((e.charCode || e.keyCode) === 27) {
-      onClose();
-    }
-  }
+  // const closeOnEscapeKeyDown = (e) => {
+  //   if ((e.charCode || e.keyCode) === 27) {
+  //     onClose();
+  //   }
+  // }
 
-  useEffect(() => {
-    document.body.addEventListener('keydown', closeOnEscapeKeyDown)
-    return function cleanup() {
-      document.body.removeEventListener('keydown', closeOnEscapeKeyDown)
-    }
-  }, [])
+  // useEffect(() => {
+  //   document.body.addEventListener('keydown', closeOnEscapeKeyDown)
+  //   return function cleanup() {
+  //     document.body.removeEventListener('keydown', closeOnEscapeKeyDown)
+  //   }
+  // }, [])
+
+  let dateObj = new Date();
+  let month = dateObj.getUTCMonth() + 1; //months from 1-12
+  let day = dateObj.getUTCDate();
+  let year = dateObj.getUTCFullYear();
+
+  let newdate = year + "-" + month + "-" + day;
 
   return (
     <>
       <div className="edit-book-status-modal" onClick={onClose}>
         <div className="edit-book-status-modal-content" onClick={e => e.stopPropagation()}>
           <div className="modal-header">
-            This is the header
-          </div>
-          <div className="modal-body">
-            This is the body
-          </div>
-          <div className="modal-footer">
-            This is the footer<br></br>
-            <button
+          <button
               onClick={onClose}
               className="button"
-            >close</button>
+            ><p>X</p></button>
+          </div>
+          <div className="modal-body">
+            <form>
+              form here
+            </form>
+          </div>
+          <div className="modal-footer">
+            <button>Save</button>
           </div>
         </div>
       </div>

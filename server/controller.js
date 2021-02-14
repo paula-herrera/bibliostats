@@ -10,9 +10,9 @@ let controllers = {
   getBooks: (req, res) => {
     queries.getAllBooks((err, books) => {
       if (err) {
-        res.send(err);
+        res.status(500).send(err);
       } else {
-        res.send(books);
+        res.status(200).send(books);
       }
     })
   },
@@ -20,8 +20,8 @@ let controllers = {
   searchBooksToAdd: (req, res) => {
     const query = req.params.query.split(' ').join('-');
     axios(`https://www.googleapis.com/books/v1/volumes?q=${query}&key=${API_KEY.API_KEY}`)
-      .then(response => res.send(response.data.items))
-      .catch(err => res.status(200).send(err));
+      .then(response => res.status(200).send(response.data.items))
+      .catch(err => res.status(500).send(err));
   },
 
   addBookToShelf: (req, res) => {
@@ -45,9 +45,26 @@ let controllers = {
     };
     queries.addBook(book, (err, book) => {
       if (err) {
-        res.send(err);
+        res.status(500).send(err);
       } else {
-        res.send(book);
+        res.status(201).send(book);
+      }
+    })
+  },
+
+  editBookDetails: (req, res) => {
+    const update = {
+      status: req.body.status,
+      dateStarted: req.body.dateStarted,
+      dateFinished: req.body.dateFinished,
+      format: req.body.format,
+      rating: req.body.rating
+    }
+    queries.editBookDetails(req.params.id, update, (err, book) => {
+      if (err) {
+        res.status(500).send(err);
+      } else {
+        res.status(201).send('successfully updated');
       }
     })
   }

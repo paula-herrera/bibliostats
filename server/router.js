@@ -18,6 +18,12 @@ router
   .route('/addToShelf')
   .post((req, res) => {
     controllers.addBookToShelf(req, res);
-  })
+  });
+
+router
+  .route('/editBookDetails/:id')
+  .patch((req, res) => {
+    controllers.editBookDetails(req, res);
+  });
 
 module.exports = router;
