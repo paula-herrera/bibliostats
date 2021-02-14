@@ -74,6 +74,7 @@ const BookPage = ({book}) => {
             <EditBook
               show={show}
               onClose={() => setShow(false)}
+              book={book}
             />
           </div>
         </div>
