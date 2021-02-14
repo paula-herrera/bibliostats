@@ -29,6 +29,26 @@ let queries = {
       .catch(err => {
         cb(err);
       })
+  },
+
+  editBookReview: (id, update, cb) => {
+    Book.findOneAndUpdate({bookId: id}, update)
+      .then(() => {
+        cb(null);
+      })
+      .catch(err => {
+        cb(err);
+      })
+  },
+
+  editBookNotes: (id, update, cb) => {
+    Book.findOneAndUpdate({bookId: id}, update)
+      .then(() => {
+        cb(null);
+      })
+      .catch(err => {
+        cb(err);
+      })
   }
 }
 
