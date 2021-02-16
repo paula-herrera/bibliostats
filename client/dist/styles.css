@@ -32,6 +32,7 @@ h4 {
 
 p {
   font-family: 'Noto Sans', sans-serif;
+  font-size: 14px;
 }
 
 button {
@@ -285,6 +286,16 @@ Add A Book
   width: auto;
 }
 
+.btn-disabled {
+  background-color: #00adb5;
+}
+
+.btn-disabled:hover {
+  pointer-events: none;
+}
+
+
+
 /*
 =====================
 Book Card
@@ -344,6 +355,11 @@ Book Page
 =====================
 */
 
+.book-page h2 {
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 25px;
+}
+
 .book-page-body {
   display: flex;
   flex-direction: row;
@@ -371,6 +387,10 @@ Book Page
 .book-page button {
   width: auto;
   margin-top: 25px;
+}
+
+.book-page .added button {
+  background-color: #00adb5;
 }
 
 .stars {

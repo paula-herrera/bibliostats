@@ -1,6 +1,6 @@
 import React from 'react';
 
-const BookFromSearch = ({book, addBook}) => {
+const BookFromSearch = ({book, addBook, onShelf}) => {
   if (book.volumeInfo.imageLinks === undefined) {
     var cover = 'https://cdn.bookauthority.org/dist/images/book-cover-not-available.6b5a104fa66be4eec4fd16aebd34fe04.png';
   } else {
@@ -35,14 +35,28 @@ const BookFromSearch = ({book, addBook}) => {
     description = 'No Description Available';
   }
 
+  let button = <></>
+  if (onShelf) {
+    button = <button
+      id={book.id}
+      className="btn-disabled"
+    >
+      On Shelf
+    </button>
+  } else {
+    button = <button
+      id={book.id}
+      onClick={addBook}
+    >
+      Add To Shelf
+    </button>
+  }
+
   return (
     <div className="bookToAdd">
       <div className="col-1">
         <img src={cover}></img>
-        <button
-          id={book.id}
-          onClick={addBook}
-        >Add To Shelf</button>
+        {button}
       </div>
       <div className="col-2">
         <h3>{title}</h3>

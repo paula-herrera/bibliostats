@@ -110,6 +110,7 @@ const App = () => {
             searchBooks={searchBooks}
             searchResults={searchResults}
             addBook={addBook}
+            allBooks={allBooks}
           />
   }
   if (activeView === 'currentlyReading') {

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import SearchResults from './SearchResults.jsx';
 
-const AddABook = ({searchBooks, searchResults, addBook}) => {
+const AddABook = ({searchBooks, searchResults, addBook, allBooks}) => {
   return (
     <div className="addABook">
       <h1>Add A Book</h1>
@@ -17,6 +17,7 @@ const AddABook = ({searchBooks, searchResults, addBook}) => {
         <SearchResults
           searchResults={searchResults}
           addBook={addBook}
+          allBooks={allBooks}
         />
       </div>
     </div>
