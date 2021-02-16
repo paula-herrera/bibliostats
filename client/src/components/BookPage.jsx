@@ -1,9 +1,19 @@
 import React, { useState } from 'react';
 import EditBook from './EditBook.jsx';
+import EditReview from './EditReview.jsx';
+import EditNotes from './EditNotes.jsx';
 
-const BookPage = ({book}) => {
-  const [show, setShow] = useState(false);
+const BookPage = ({book, editBookDetails, editBookReview, editBookNotes}) => {
+  const [showEditDetails, setShowEditDetails] = useState(false);
+  const [showEditReview, setShowEditReview] = useState(false);
+  const [showEditNotes, setShowEditNotes] = useState(false);
 
+  let bookStatus = <></>
+  if (book.status === '') {
+    bookStatus = <p>No Status</p>
+  } else {
+    bookStatus = <p>{book.status}</p>
+  }
   let dateStarted = <></>
   if (book.dateStarted === '') {
     dateStarted = <p>No Start Date</p>
@@ -30,6 +40,7 @@ const BookPage = ({book}) => {
   }
 
   let status = <div>
+    {bookStatus}
     {dateStarted}
     {dateFinished}
     {format}
@@ -40,13 +51,13 @@ const BookPage = ({book}) => {
   if (book.review === '') {
     review = <p>Add a review</p>
   } else {
-    <p>{book.review}</p>
+    review = <p>{book.review}</p>
   }
   let notes = <></>
   if (book.notes === '') {
     notes = <p>Add a note</p>
   } else {
-    <p>{book.notes}</p>
+    notes = <p>{book.notes}</p>
   }
 
   return (
@@ -64,27 +75,42 @@ const BookPage = ({book}) => {
             <p>{book.genres}</p>
           </div>
           <div className="book-page-status">
-            <p>Status</p>
             {status}
             <button
-              onClick={() => setShow(true)}
+              onClick={() => setShowEditDetails(true)}
             >Edit Status</button>
             <EditBook
-              show={show}
-              onClose={() => setShow(false)}
+              show={showEditDetails}
+              onClose={() => setShowEditDetails(false)}
               book={book}
+              editBookDetails={editBookDetails}
             />
           </div>
         </div>
         <div>
           <p>Review</p>
           {review}
-          <button>Edit Review</button>
+          <button
+            onClick={() => setShowEditReview(true)}
+          >Edit Review</button>
+          <EditReview
+              show={showEditReview}
+              onClose={() => setShowEditReview(false)}
+              book={book}
+              editBookReview={editBookReview}
+            />
         </div>
         <div>
           <p>Notes</p>
           {notes}
-          <button>Edit Notes</button>
+          <button onClick={() => setShowEditNotes(true)}
+          >Edit Notes</button>
+          <EditNotes
+              show={showEditNotes}
+              onClose={() => setShowEditNotes(false)}
+              book={book}
+              editBookNotes={editBookNotes}
+            />
         </div>
       </div>
     </>
