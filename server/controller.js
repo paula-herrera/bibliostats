@@ -1,7 +1,5 @@
-// link to database here
 const API_KEY = require('../config/googleBooks');
 const axios = require('axios');
-//connsect to database controllers here
 const queries = require('../database/controllers/index.js');
 
 require('../database/index.js');
@@ -91,6 +89,17 @@ let controllers = {
         res.status(500).send(err);
       } else {
         res.status(201).send(book);
+      }
+    })
+  },
+
+  deleteBook: (req, res) => {
+    console.log('controler:', req.params.id)
+    queries.deleteBook(req.params.id, (err) => {
+      if (err) {
+        res.status(500).send(err);
+      } else {
+        res.status(200).send('Successfully deleted book');
       }
     })
   }

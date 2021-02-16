@@ -52,6 +52,16 @@ let queries = {
       .catch(err => {
         cb(err, null);
       })
+  },
+
+  deleteBook: (id, cb) => {
+    Book.findOneAndRemove({bookId: id})
+      .then(() => {
+        cb();
+      })
+      .catch(err => {
+        cb(err);
+      })
   }
 }
 
