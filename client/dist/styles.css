@@ -99,6 +99,50 @@ Header/Navigation
   margin: 0 25px 0 25px;
 }
 
+.nav div:hover {
+  cursor: pointer;
+}
+
+.dropbtn {
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #f9f9f9;
+  min-width: 170px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content div {
+  padding: 12px;
+  margin: 0 0;
+  font-size: 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content div:hover  {
+  color: #00adb5;
+}
+
+.dropdown:hover .dropdown-content  {
+  display: block;
+  padding-top: 10px;
+}
+
+.dropdown:hover .dropbtn  {
+  color: grey;
+}
 
 /*
 =====================
@@ -148,17 +192,18 @@ Bookshelf
 
 .bookshelf img {
   transition: all 0.25s ease-out;
+  cursor: pointer;
 }
 
 .bookshelf img:hover {
-  box-shadow: 0px 4px 21px 0px rgba(0,0,0,0.25);
--webkit-box-shadow: 0px 4px 21px 0px rgba(0,0,0,0.25);
--moz-box-shadow: 0px 4px 21px 0px rgba(0,0,0,0.25);
+  box-shadow: 0px 4px 21px 0px rgba(0,0,0,0.75);
+  -webkit-box-shadow: 0px 4px 21px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 4px 21px 0px rgba(0,0,0,0.75);
 }
 
 /*
 =====================
-To Be Read
+Status Category Pages
 =====================
 */
 .tbr {
@@ -243,18 +288,20 @@ Book Card
   margin-bottom: 25px;
   margin-right: 25px;
   width: auto;
+  height: 100%;
   background-color: white;
   border-radius: 8px;
   padding-top: 25px;
   padding-bottom: 25px;
   padding: 25px 20px;
-  transition: none;
+  transition: all 0.25s ease-out;
 }
 
 .book-card-inner:hover {
-  box-shadow: none;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
+  box-shadow: 0px 4px 12px 0px rgba(0,0,0,0.25);
+  -webkit-box-shadow: 0px 4px 12px 0px rgba(0,0,0,0.25);
+  -moz-box-shadow: 0px 4px 12px 0px rgba(0,0,0,0.25);
+  cursor: pointer;
 }
 
 .book-card-body {
@@ -290,17 +337,43 @@ Book Page
 .book-page-body {
   display: flex;
   flex-direction: row;
+  align-items: flex-start;
+}
+
+.book-page-body p {
+  margin: 0 0 5px 0;
+}
+
+.cover-info {
+  display: flex;
+  flex-direction: row;
+  margin-right: 70px;
 }
 
 .book-page-cover {
   padding-right: 20px;
 }
 
-.book-page-status {
-  padding-left: 30px;
+.book-page-author {
+  font-size: 24px;
 }
 
-.edit-book-status-modal {
+.book-page button {
+  width: 200px;
+  margin-top: 25px;
+}
+
+.stars {
+  color: #00adb5;
+}
+
+.review,
+.notes {
+  margin-top: 80px;
+  padding-right: 25%;
+}
+
+.modal {
   position: fixed;
   left: 0;
   top: 0;
@@ -320,8 +393,9 @@ Book Page
   pointer-events: visible;
 }
 
-.edit-book-status-modal-content {
+.modal-content {
   width: 500px;
+  max-width: 500px;
   background-color: #fff;
   border-radius: 8px;
   transition: all 0.3s ease-in-out;
@@ -337,6 +411,7 @@ Book Page
 .modal-header button {
   border-radius: 0 8px 0 0;
   width: 60px;
+  margin: 0;
 }
 
 .modal-header p {
@@ -359,6 +434,7 @@ Book Page
 
 .modal-input {
   width: 230px;
+  margin-bottom: 15px;
 }
 
 .modal-footer {
@@ -369,4 +445,9 @@ Book Page
 
 .modal-footer button {
   margin-bottom: 25px;
+}
+
+.modal textarea {
+  font-family: 'Noto Sans', sans-serif;
+  padding: 8px;
 }

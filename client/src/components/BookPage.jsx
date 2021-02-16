@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import moment from 'moment';
 import EditBook from './EditBook.jsx';
 import EditReview from './EditReview.jsx';
 import EditNotes from './EditNotes.jsx';
@@ -18,13 +19,13 @@ const BookPage = ({book, editBookDetails, editBookReview, editBookNotes}) => {
   if (book.dateStarted === '') {
     dateStarted = <p>No Start Date</p>
   } else {
-    dateStarted = <p>Started reading on {book.dateStarted}</p>
+    dateStarted = <p>Started on: {moment(book.dateStarted).format('MMMM Do YYYY')}</p>
   }
   let dateFinished = <></>
   if (book.dateStarted === '') {
     dateFinished = <p>No Finish Date</p>
   } else {
-    dateFinished = <p>Finished reading on {book.dateFinished}</p>
+    dateFinished = <p>Finished on: {moment(book.dateFinished).format('MMMM Do YYYY')}</p>
   }
   let format = <></>
   if (book.format === '') {
@@ -35,8 +36,16 @@ const BookPage = ({book, editBookDetails, editBookReview, editBookNotes}) => {
   let rating = <></>
   if (book.rating === 0) {
     rating = <p>Not Rated</p>
-  } else {
-    rating = <p>{book.rating}/5</p>
+  } else if (book.rating === 1) {
+    rating = <p className="stars">★☆☆☆☆</p>
+  } else if (book.rating === 2) {
+    rating = <p className="stars">★★☆☆☆</p>
+  } else if (book.rating === 3) {
+    rating = <p className="stars">★★★☆☆</p>
+  } else if (book.rating === 4) {
+    rating = <p className="stars">★★★★☆</p>
+  } else if (book.rating === 5) {
+    rating = <p className="stars">★★★★★</p>
   }
 
   let status = <div>
@@ -49,15 +58,15 @@ const BookPage = ({book, editBookDetails, editBookReview, editBookNotes}) => {
 
   let review = <></>
   if (book.review === '') {
-    review = <p>Add a review</p>
+    review = <div><p>Add a review</p></div>
   } else {
-    review = <p>{book.review}</p>
+    review = <div className="review-notes"><p>{book.review}</p></div>
   }
   let notes = <></>
   if (book.notes === '') {
-    notes = <p>Add a note</p>
+    notes = <div><p>Add a note</p></div>
   } else {
-    notes = <p>{book.notes}</p>
+    notes = <div className="review-notes"><p>{book.notes}</p></div>
   }
 
   return (
@@ -65,52 +74,56 @@ const BookPage = ({book, editBookDetails, editBookReview, editBookNotes}) => {
       <h1>{book.title}</h1>
       <div className="book-page">
         <div className="book-page-body">
-          <div className="book-page-cover">
-            <img src={book.cover}></img>
-          </div>
-          <div className="book-page-info">
-            <p>{book.authors}</p>
-            <p>{book.publishedDate.substr(0,4)}</p>
-            <p>{book.pages} pages</p>
-            <p>{book.genres}</p>
-          </div>
-          <div className="book-page-status">
-            {status}
+            <div className="cover-info">
+              <div className="book-page-cover">
+                <img src={book.cover}></img>
+              </div>
+              <div className="book-page-info">
+                <p className="book-page-author">{book.authors}</p>
+                <p>{book.publishedDate.substr(0,4)}</p>
+                <p>{book.pages} pages</p>
+                <p>{book.genres}</p>
+              </div>
+            </div>
+            <div className="book-page-status">
+              {status}
+              <button
+                onClick={() => setShowEditDetails(true)}
+              >Edit Status</button>
+              <EditBook
+                show={showEditDetails}
+                onClose={() => setShowEditDetails(false)}
+                book={book}
+                editBookDetails={editBookDetails}
+              />
+            </div>
+        </div>
+        <div className="row">
+          <div className="review">
+            <h2>Review</h2>
+            {review}
             <button
-              onClick={() => setShowEditDetails(true)}
-            >Edit Status</button>
-            <EditBook
-              show={showEditDetails}
-              onClose={() => setShowEditDetails(false)}
-              book={book}
-              editBookDetails={editBookDetails}
-            />
+              onClick={() => setShowEditReview(true)}
+            >Edit Review</button>
+            <EditReview
+                show={showEditReview}
+                onClose={() => setShowEditReview(false)}
+                book={book}
+                editBookReview={editBookReview}
+              />
           </div>
-        </div>
-        <div>
-          <p>Review</p>
-          {review}
-          <button
-            onClick={() => setShowEditReview(true)}
-          >Edit Review</button>
-          <EditReview
-              show={showEditReview}
-              onClose={() => setShowEditReview(false)}
-              book={book}
-              editBookReview={editBookReview}
-            />
-        </div>
-        <div>
-          <p>Notes</p>
-          {notes}
-          <button onClick={() => setShowEditNotes(true)}
-          >Edit Notes</button>
-          <EditNotes
-              show={showEditNotes}
-              onClose={() => setShowEditNotes(false)}
-              book={book}
-              editBookNotes={editBookNotes}
-            />
+          <div>
+            <h2 className="notes">Notes</h2>
+            {notes}
+            <button onClick={() => setShowEditNotes(true)}
+            >Edit Notes</button>
+            <EditNotes
+                show={showEditNotes}
+                onClose={() => setShowEditNotes(false)}
+                book={book}
+                editBookNotes={editBookNotes}
+              />
+          </div>
         </div>
       </div>
     </>
