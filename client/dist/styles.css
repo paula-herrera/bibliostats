@@ -245,14 +245,17 @@ Add A Book
   display: flex;
   flex-direction: row;
   justify-content: center;
+  background-color: white;
+  border-radius: 8px;
+  padding: 30px;
 }
 
 .bookToAdd {
-  border: solid 1px grey;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   font-size: 12px;
+  margin-bottom: 50px;
 }
 
 .bookToAdd .col-1,
@@ -264,11 +267,12 @@ Add A Book
 .bookToAdd .col-1 {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
 }
 
 .bookToAdd .col-2 {
-  margin: 0 5px 0 5px;
+  margin: 0 35px 0 25px;
+  width: 200px;
 }
 
 .bookToAdd .col-3 {
@@ -277,7 +281,8 @@ Add A Book
 }
 
 .bookToAdd button {
-  margin-top: 10px;
+  margin-top: 25px;
+  width: auto;
 }
 
 /*
@@ -364,7 +369,7 @@ Book Page
 }
 
 .book-page button {
-  width: 200px;
+  width: auto;
   margin-top: 25px;
 }
 
