@@ -9,7 +9,7 @@ import DNF from './TBR.jsx';
 import BookPage from './BookPage.jsx';
 
 const App = () => {
-  const [activeView, setActiveView] = useState('bookshelf');
+  const [activeView, setActiveView] = useState('addABook');
   const [allBooks, setAllBooks] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
   const [selectedBook, setSelectedBook] = useState({});

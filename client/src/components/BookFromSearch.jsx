@@ -6,41 +6,34 @@ const BookFromSearch = ({book, addBook}) => {
   } else {
     var cover = book.volumeInfo.imageLinks.thumbnail
   }
-
   let title = book.volumeInfo.title;
   if (!title) {
     title = 'No Title Available';
   }
-
   let authors = book.volumeInfo.authors;
   if (!authors) {
     authors = 'Authors Not Available';
   }
-
   let publishedDate = undefined;
   if (book.volumeInfo.publishedDate === undefined) {
     publishedDate = 'No Publish Date Available';
   } else {
     publishedDate = book.volumeInfo.publishedDate.substr(0, 4);
   }
-
   let categories = book.volumeInfo.categories;
   if (!categories) {
     categories = 'No Genres Available';
   }
-
   let pageCount = book.volumeInfo.pageCount;
   if (!pageCount) {
     pageCount = 'Page Count Not Available';
   } else {
     pageCount += ' pages';
   }
-
   let description = book.volumeInfo.description;
   if (!description) {
     description = 'No Description Available';
   }
-
 
   return (
     <div className="bookToAdd">
@@ -52,7 +45,7 @@ const BookFromSearch = ({book, addBook}) => {
         >Add To Shelf</button>
       </div>
       <div className="col-2">
-        <p>{title}</p>
+        <h3>{title}</h3>
         <p>{authors}</p>
         <p>{publishedDate}</p>
         <p>{categories}</p>
