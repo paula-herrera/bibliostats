@@ -9,7 +9,8 @@ import DNF from './TBR.jsx';
 import BookPage from './BookPage.jsx';
 
 const App = () => {
-  const [activeView, setActiveView] = useState('addABook');
+  const [activeView, setActiveView] = useState('bookshelf');
+  const [prevView, setPrevView] = useState('')
   const [allBooks, setAllBooks] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
   const [selectedBook, setSelectedBook] = useState({});
@@ -17,7 +18,8 @@ const App = () => {
   useEffect(() => {getAllBooks()}, []);
 
   const changeView = (view) => {
-    setActiveView(view)
+    setPrevView(activeView);
+    setActiveView(view);
   }
 
   const goToBookPage = (book) => {
@@ -89,6 +91,12 @@ const App = () => {
       .then(() => getAllBooks())
   }
 
+  const deleteBook = (id) => {
+    axios.delete(`http://localhost:1313/api/deleteBook/${id}`)
+      .then(() => setActiveView(prevView))
+      .then(() => getAllBooks())
+  }
+
   let bookshelfNav = {borderBottom: "none"};
   let addBookNav = {borderBottom: "none"};
   let style = {borderBottom: "2px solid #00adb5"}
@@ -157,6 +165,7 @@ const App = () => {
       editBookDetails={editBookDetails}
       editBookReview={editBookReview}
       editBookNotes={editBookNotes}
+      deleteBook={deleteBook}
     />
   }
 

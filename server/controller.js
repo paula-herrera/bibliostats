@@ -94,7 +94,6 @@ let controllers = {
   },
 
   deleteBook: (req, res) => {
-    console.log('controler:', req.params.id)
     queries.deleteBook(req.params.id, (err) => {
       if (err) {
         res.status(500).send(err);
