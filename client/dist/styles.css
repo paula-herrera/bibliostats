@@ -228,7 +228,15 @@ Status Category Pages
   flex-direction: column;
 }
 
+.sort-by {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 25px 25px 0;
+}
 
+.sort-by label {
+  padding-right: 10px;
+}
 
 /*
 =====================
