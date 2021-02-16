@@ -17,9 +17,11 @@ const BookFromSearch = ({book, addBook}) => {
     authors = 'Authors Not Available';
   }
 
-  let publishedDate = book.volumeInfo.publishedDate.substr(0, 4);
-  if (!publishedDate) {
+  let publishedDate = undefined;
+  if (book.volumeInfo.publishedDate === undefined) {
     publishedDate = 'No Publish Date Available';
+  } else {
+    publishedDate = book.volumeInfo.publishedDate.substr(0, 4);
   }
 
   let categories = book.volumeInfo.categories;

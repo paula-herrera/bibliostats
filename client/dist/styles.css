@@ -235,6 +235,11 @@ Add A Book
 =====================
 */
 
+#search {
+  padding: 10px;
+  width: 300px;
+}
+
 .searchResults {
   margin-top: 50px;
   display: flex;

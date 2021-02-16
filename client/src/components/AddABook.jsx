@@ -2,12 +2,6 @@ import React, { useState } from 'react';
 import SearchResults from './SearchResults.jsx';
 
 const AddABook = ({searchBooks, searchResults, addBook}) => {
-  const [query, setQuery] = useState('');
-
-  const submit = () => {
-    searchBooks(query);
-  }
-
   return (
     <div className="addABook">
       <h1>Add A Book</h1>
@@ -17,11 +11,8 @@ const AddABook = ({searchBooks, searchResults, addBook}) => {
             id="search"
             type="text"
             placeholder="Search"
-            onChange={(e) => setQuery(e.target.value)}
+            onChange={(e) => searchBooks(e.target.value)}
           ></input>
-          <button
-            onClick={submit}
-          >Go!</button>
         </div>
         <SearchResults
           searchResults={searchResults}
