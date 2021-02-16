@@ -38,4 +38,11 @@ router
     controllers.editBookNotes(req, res);
   });
 
+router
+  .route('/deleteBook/:id')
+  .delete((req, res) => {
+    console.log('router', req.params.id)
+    controllers.deleteBook(req, res);
+});
+
 module.exports = router;
