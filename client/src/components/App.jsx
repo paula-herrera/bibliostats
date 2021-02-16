@@ -12,7 +12,7 @@ const App = () => {
   const [activeView, setActiveView] = useState('bookshelf');
   const [allBooks, setAllBooks] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
-  const [selectedBook, setSelectedBook] = useState({})
+  const [selectedBook, setSelectedBook] = useState({});
 
   useEffect(() => {getAllBooks()}, []);
 
@@ -35,7 +35,7 @@ const App = () => {
   const searchBooks = (query) => {
     axios.get(`http://localhost:1313/api/search/${query}`)
       .then(results => setSearchResults(results.data))
-      .catch(() => console.log('couldn\'t search'))
+      .catch(() => console.log('Coult not perform search'))
   }
 
   const addBook = (e) => {
@@ -89,89 +89,97 @@ const App = () => {
       .then(() => getAllBooks())
   }
 
+  let bookshelfNav = {borderBottom: "none"};
+  let addBookNav = {borderBottom: "none"};
+  let style = {borderBottom: "2px solid #00adb5"}
 
-    let view = <></>
-    if (activeView === 'bookshelf') {
-      view = <Bookshelf
-              allBooks={allBooks}
-              changeView={changeView}
-              goToBookPage={goToBookPage}
-            />
-    }
-    if (activeView === 'addABook') {
-      view = <AddABook
-              searchBooks={searchBooks}
-              searchResults={searchResults}
-              addBook={addBook}
-            />
-    }
-    if (activeView === 'currentlyReading') {
-      let books = allBooks.filter(book => book.status === 'Currently Reading');
-      view = <CurrentlyReading
-        books={books}
-        goToBookPage={goToBookPage}
-      />
-    }
-    if (activeView === 'read') {
-      let books = allBooks.filter(book => book.status === 'Read');
-      view = <Read
-        books={books}
-        goToBookPage={goToBookPage}
-      />
-    }
-    if (activeView === 'tbr') {
-      let books = allBooks.filter(book => book.status === 'To Be Read');
-      view = <TBR
-        books={books}
-        goToBookPage={goToBookPage}
-      />
-    }
-    if (activeView === 'dnf') {
-      let books = allBooks.filter(book => book.status === 'Did Not Finish');
-      view = <DNF
-        books={books}
-        goToBookPage={goToBookPage}
-      />
-    }
-    if (activeView === 'bookPage') {
-      view = <BookPage
-        book={selectedBook}
-        editBookDetails={editBookDetails}
-        editBookReview={editBookReview}
-        editBookNotes={editBookNotes}
-      />
-    }
-    return (
-      <div className="main">
-        <div className="header">
-          <div className="logo">BiblioStats</div>
-          <div className="nav">
-            <div className="bookshelf-nav dropdown">
-              <div className="bookshelf-nav dropbtn" onClick={() => changeView('bookshelf')}>Bookshelf</div>
-              <div className="dropdown-content">
-                <div onClick={() => changeView('currentlyReading')}>Currently Reading</div>
-                <div onClick={() => changeView('read')}>Read</div>
-                <div onClick={() => changeView('tbr')}>To Be Read</div>
-                <div onClick={() => changeView('dnf')}>Did Not Finish</div>
-              </div>
+  let view = <></>
+  if (activeView === 'bookshelf') {
+    bookshelfNav = style;
+    addBookNav = {borderBottom: "none"}
+    view = <Bookshelf
+            allBooks={allBooks}
+            changeView={changeView}
+            goToBookPage={goToBookPage}
+          />
+  }
+  if (activeView === 'addABook') {
+    addBookNav = style;
+    bookshelfNav = {borderBottom: "none"}
+    view = <AddABook
+            searchBooks={searchBooks}
+            searchResults={searchResults}
+            addBook={addBook}
+          />
+  }
+  if (activeView === 'currentlyReading') {
+    let books = allBooks.filter(book => book.status === 'Currently Reading');
+    bookshelfNav = style;
+    addBookNav = {borderBottom: "none"}
+    view = <CurrentlyReading
+      books={books}
+      goToBookPage={goToBookPage}
+    />
+  }
+  if (activeView === 'read') {
+    let books = allBooks.filter(book => book.status === 'Read');
+    bookshelfNav = style;
+    addBookNav = {borderBottom: "none"}
+    view = <Read
+      books={books}
+      goToBookPage={goToBookPage}
+    />
+  }
+  if (activeView === 'tbr') {
+    let books = allBooks.filter(book => book.status === 'To Be Read');
+    bookshelfNav = style;
+    addBookNav = {borderBottom: "none"}
+    view = <TBR
+      books={books}
+      goToBookPage={goToBookPage}
+    />
+  }
+  if (activeView === 'dnf') {
+    let books = allBooks.filter(book => book.status === 'Did Not Finish');
+    bookshelfNav = style;
+    addBookNav = {borderBottom: "none"}
+    view = <DNF
+      books={books}
+      goToBookPage={goToBookPage}
+    />
+  }
+  if (activeView === 'bookPage') {
+    bookshelfNav = style;
+    addBookNav = {borderBottom: "none"}
+    view = <BookPage
+      book={selectedBook}
+      editBookDetails={editBookDetails}
+      editBookReview={editBookReview}
+      editBookNotes={editBookNotes}
+    />
+  }
+
+  return (
+    <div className="main">
+      <div className="header">
+        <div className="logo" onClick={() => changeView('bookshelf')}>BiblioStats</div>
+        <div className="nav">
+          <div className="bookshelf-nav dropdown">
+            <div className="bookshelf-nav dropbtn" style={bookshelfNav} onClick={() => changeView('bookshelf')}>Bookshelf</div>
+            <div className="dropdown-content">
+              <div onClick={() => changeView('currentlyReading')}>Currently Reading</div>
+              <div onClick={() => changeView('read')}>Read</div>
+              <div onClick={() => changeView('tbr')}>To Be Read</div>
+              <div onClick={() => changeView('dnf')}>Did Not Finish</div>
             </div>
-            <div className="bookshelf-nav" onClick={() => changeView('bookshelf')}>Bookshelf</div>
-            <div className="stats-nav">Stats</div>
-            <div className="add-book-nav" onClick={() => changeView('addABook')}>Add A Book</div>
           </div>
+          <div className="stats-nav">Stats</div>
+          <div className="add-book-nav" style={addBookNav} onClick={() => changeView('addABook')}>Add A Book</div>
         </div>
-        {view}
       </div>
-    )
+      {view}
+    </div>
+  )
 }
 
 export default App;
-
-<div class="dropdown">
-  <button class="dropbtn">Dropdown</button>
-  <div class="dropdown-content">
-    <a href="#">Link 1</a>
-    <a href="#">Link 2</a>
-    <a href="#">Link 3</a>
-  </div>
-</div>

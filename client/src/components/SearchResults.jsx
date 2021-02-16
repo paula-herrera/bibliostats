@@ -3,9 +3,9 @@ import BookFromSearch from './BookFromSearch.jsx';
 
 const SearchResults = ({searchResults, addBook}) => {
   let view = <></>
-  if (searchResults.length == 0) {
+  if (searchResults.length === 0) {
     view = <div className="no-results">Search For Books</div>
-  } else {
+  } else if (searchResults.length > 0) {
     view =
       <div className="results">
         {searchResults.map((book, i) =>
