@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/biblioStats', { useFindAndModify: false ,useUnifiedTopology: true, useNewUrlParser: true  });
+mongoose.connect('mongodb+srv://bibliostats_user:gUMEDYbe6PbkBs8f@cluster0.v7gkq.mongodb.net/bibliostats?retryWrites=true&w=majority', { useFindAndModify: false ,useUnifiedTopology: true, useNewUrlParser: true  });
 
 const db = mongoose.connection;
 
