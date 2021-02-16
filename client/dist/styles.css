@@ -355,6 +355,12 @@ Book Page
 =====================
 */
 
+.book-page {
+  background-color: white;
+  border-radius: 8px;
+  padding: 25px;
+}
+
 .book-page h2 {
   font-family: 'Noto Sans', sans-serif;
   font-size: 25px;
@@ -480,4 +486,23 @@ Book Page
 .modal textarea {
   font-family: 'Noto Sans', sans-serif;
   padding: 8px;
+}
+
+/*
+=====================
+Stats
+=====================
+*/
+
+.stats-body {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  border-radius: 8px;
+  background-color: white;
+  padding: 80px;
+}
+
+.stats p {
+  font-size: 24px;
 }

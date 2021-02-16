@@ -3,10 +3,11 @@ import axios from 'axios';
 import Bookshelf from './Bookshelf.jsx';
 import AddABook from './AddABook.jsx';
 import CurrentlyReading from './CurrentlyReading.jsx';
-import Read from './TBR.jsx';
+import Read from './Read.jsx';
 import TBR from './TBR.jsx';
-import DNF from './TBR.jsx';
+import DNF from './DNF.jsx';
 import BookPage from './BookPage.jsx';
+import Stats from './Stats.jsx'
 
 const App = () => {
   const [activeView, setActiveView] = useState('bookshelf');
@@ -99,12 +100,14 @@ const App = () => {
 
   let bookshelfNav = {borderBottom: "none"};
   let addBookNav = {borderBottom: "none"};
+  let statsNav = {borderBottom: "none"};
   let style = {borderBottom: "2px solid #00adb5"}
 
   let view = <></>
   if (activeView === 'bookshelf') {
     bookshelfNav = style;
     addBookNav = {borderBottom: "none"}
+    addBookNav = {borderBottom: "none"};
     view = <Bookshelf
             allBooks={allBooks}
             changeView={changeView}
@@ -114,6 +117,7 @@ const App = () => {
   if (activeView === 'addABook') {
     addBookNav = style;
     bookshelfNav = {borderBottom: "none"}
+    addBookNav = {borderBottom: "none"};
     view = <AddABook
             searchBooks={searchBooks}
             searchResults={searchResults}
@@ -125,6 +129,7 @@ const App = () => {
     let books = allBooks.filter(book => book.status === 'Currently Reading');
     bookshelfNav = style;
     addBookNav = {borderBottom: "none"}
+    addBookNav = {borderBottom: "none"};
     view = <CurrentlyReading
       books={books}
       goToBookPage={goToBookPage}
@@ -134,6 +139,7 @@ const App = () => {
     let books = allBooks.filter(book => book.status === 'Read');
     bookshelfNav = style;
     addBookNav = {borderBottom: "none"}
+    addBookNav = {borderBottom: "none"};
     view = <Read
       books={books}
       goToBookPage={goToBookPage}
@@ -143,6 +149,7 @@ const App = () => {
     let books = allBooks.filter(book => book.status === 'To Be Read');
     bookshelfNav = style;
     addBookNav = {borderBottom: "none"}
+    addBookNav = {borderBottom: "none"};
     view = <TBR
       books={books}
       goToBookPage={goToBookPage}
@@ -152,6 +159,7 @@ const App = () => {
     let books = allBooks.filter(book => book.status === 'Did Not Finish');
     bookshelfNav = style;
     addBookNav = {borderBottom: "none"}
+    addBookNav = {borderBottom: "none"};
     view = <DNF
       books={books}
       goToBookPage={goToBookPage}
@@ -159,13 +167,22 @@ const App = () => {
   }
   if (activeView === 'bookPage') {
     bookshelfNav = style;
-    addBookNav = {borderBottom: "none"}
+    addBookNav = {borderBottom: "none"};
+    addBookNav = {borderBottom: "none"};
     view = <BookPage
       book={selectedBook}
       editBookDetails={editBookDetails}
       editBookReview={editBookReview}
       editBookNotes={editBookNotes}
       deleteBook={deleteBook}
+    />
+  }
+  if (activeView === 'stats') {
+    bookshelfNav = {borderBottom: "none"};
+    addBookNav = {borderBottom: "none"};
+    statsNav = style;
+    view = <Stats
+      allBooks={allBooks}
     />
   }
 
@@ -183,7 +200,7 @@ const App = () => {
               <div onClick={() => changeView('dnf')}>Did Not Finish</div>
             </div>
           </div>
-          <div className="stats-nav">Stats</div>
+          <div className="stats-nav" style={statsNav} onClick={() => changeView('stats')}>Stats</div>
           <div className="add-book-nav" style={addBookNav} onClick={() => changeView('addABook')}>Add A Book</div>
         </div>
       </div>
