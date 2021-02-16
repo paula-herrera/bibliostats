@@ -14,7 +14,7 @@ const App = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [selectedBook, setSelectedBook] = useState({})
 
-  useEffect(() => getAllBooks());
+  useEffect(() => {getAllBooks()}, []);
 
   const changeView = (view) => {
     setActiveView(view)
@@ -57,6 +57,35 @@ const App = () => {
     axios.post('http://localhost:1313/api/addToShelf', bookToAdd)
       .then(() => getAllBooks())
   }
+
+  const editBookDetails = (id, status, dateStarted, dateFinished, format, rating) => {
+    const update = {
+      status: status,
+      dateStarted: dateStarted,
+      dateFinished: dateFinished,
+      format: format,
+      rating: rating
+    }
+    axios.patch(`http://localhost:1313/api/editBookDetails/${id}`, update)
+      .then((book) => setSelectedBook(book.data[0]))
+  }
+
+  const editBookReview = (id, review) => {
+    const update = {
+      review: review,
+    }
+    axios.patch(`http://localhost:1313/api/editBookReview/${id}`, update)
+      .then((book) => setSelectedBook(book.data[0]))
+  }
+
+  const editBookNotes = (id, notes) => {
+    const update = {
+      notes: notes,
+    }
+    axios.patch(`http://localhost:1313/api/editBookNotes/${id}`, update)
+      .then((book) => setSelectedBook(book.data[0]))
+  }
+
 
     let view = <></>
     if (activeView === 'bookshelf') {
@@ -104,6 +133,9 @@ const App = () => {
     if (activeView === 'bookPage') {
       view = <BookPage
         book={selectedBook}
+        editBookDetails={editBookDetails}
+        editBookReview={editBookReview}
+        editBookNotes={editBookNotes}
       />
     }
     return (

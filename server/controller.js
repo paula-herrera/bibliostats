@@ -64,7 +64,7 @@ let controllers = {
       if (err) {
         res.status(500).send(err);
       } else {
-        res.status(201).send('successfully updated');
+        res.status(201).send(book);
       }
     })
   },
@@ -77,20 +77,20 @@ let controllers = {
       if (err) {
         res.status(500).send(err);
       } else {
-        res.status(201).send('successfully updated');
+        res.status(201).send(book);
       }
     })
   },
 
   editBookNotes: (req, res) => {
     const update = {
-      rnotes: req.body.notes
+      notes: req.body.notes
     }
     queries.editBookNotes(req.params.id, update, (err, book) => {
       if (err) {
         res.status(500).send(err);
       } else {
-        res.status(201).send('successfully updated');
+        res.status(201).send(book);
       }
     })
   }

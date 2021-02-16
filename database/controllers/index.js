@@ -23,31 +23,34 @@ let queries = {
 
   editBookDetails: (id, update, cb) => {
     Book.findOneAndUpdate({bookId: id}, update)
-      .then(() => {
-        cb(null);
+      .then(() => Book.find({bookId: id}))
+      .then((book) => {
+        cb(null, book);
       })
       .catch(err => {
-        cb(err);
+        cb(err, null);
       })
   },
 
   editBookReview: (id, update, cb) => {
     Book.findOneAndUpdate({bookId: id}, update)
-      .then(() => {
-        cb(null);
+      .then(() => Book.find({bookId: id}))
+      .then((book) => {
+        cb(null, book);
       })
       .catch(err => {
-        cb(err);
+        cb(err, null);
       })
   },
 
   editBookNotes: (id, update, cb) => {
     Book.findOneAndUpdate({bookId: id}, update)
-      .then(() => {
-        cb(null);
+      .then(() => Book.find({bookId: id}))
+      .then((book) => {
+        cb(null, book);
       })
       .catch(err => {
-        cb(err);
+        cb(err, null);
       })
   }
 }

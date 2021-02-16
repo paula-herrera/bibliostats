@@ -51,6 +51,7 @@ button:hover {
   box-shadow: 0px 4px 12px 0px rgba(0,0,0,0.25);
   -webkit-box-shadow: 0px 4px 12px 0px rgba(0,0,0,0.25);
   -moz-box-shadow: 0px 4px 12px 0px rgba(0,0,0,0.25);
+  cursor: pointer;
 }
 
 img {
@@ -305,16 +306,27 @@ Book Page
   top: 0;
   right: 0;
   bottom: 0;
-  background-color: rgbs(0 0 0 0.75);
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+  pointer-events: none;
+}
+
+.show {
+  opacity: 1;
+  pointer-events: visible;
 }
 
 .edit-book-status-modal-content {
   width: 500px;
   background-color: #fff;
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
 }
+
 
 .modal-header {
   display: flex;
@@ -323,7 +335,38 @@ Book Page
 }
 
 .modal-header button {
-  border-radius: 0;
+  border-radius: 0 8px 0 0;
+  width: 60px;
 }
 
+.modal-header p {
+  font-size: 10px;
+  padding: 0 0 0 0;
+  margin: 0 0 0 0;
+  width: 40px;
+}
 
+.modal-body {
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.modal-input {
+  width: 230px;
+}
+
+.modal-footer {
+  display: flex;
+  display: column;
+  justify-content: center;
+}
+
+.modal-footer button {
+  margin-bottom: 25px;
+}
