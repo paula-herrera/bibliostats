@@ -41,7 +41,6 @@ router
 router
   .route('/deleteBook/:id')
   .delete((req, res) => {
-    console.log('router', req.params.id)
     controllers.deleteBook(req, res);
 });
 

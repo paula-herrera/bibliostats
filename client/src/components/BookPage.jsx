@@ -4,7 +4,7 @@ import EditBook from './EditBook.jsx';
 import EditReview from './EditReview.jsx';
 import EditNotes from './EditNotes.jsx';
 
-const BookPage = ({book, editBookDetails, editBookReview, editBookNotes}) => {
+const BookPage = ({book, editBookDetails, editBookReview, editBookNotes, deleteBook}) => {
   const [showEditDetails, setShowEditDetails] = useState(false);
   const [showEditReview, setShowEditReview] = useState(false);
   const [showEditNotes, setShowEditNotes] = useState(false);
@@ -125,6 +125,12 @@ const BookPage = ({book, editBookDetails, editBookReview, editBookNotes}) => {
               />
           </div>
         </div>
+        <button
+          className="remove-btn"
+          onClick={() => deleteBook(book.bookId)}
+        >
+          Remove From Shelf
+        </button>
       </div>
     </>
   )

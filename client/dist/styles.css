@@ -389,7 +389,8 @@ Book Page
   margin-top: 25px;
 }
 
-.book-page .added button {
+.remove-btn {
+  margin-top: 75px !important;
   background-color: #00adb5;
 }
 
@@ -430,7 +431,6 @@ Book Page
   border-radius: 8px;
   transition: all 0.3s ease-in-out;
 }
-
 
 .modal-header {
   display: flex;
