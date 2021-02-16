@@ -2,9 +2,14 @@ import React from 'react';
 
 const BookFromSearch = ({book, addBook, onShelf}) => {
   if (book.volumeInfo.imageLinks === undefined) {
-    var cover = 'https://cdn.bookauthority.org/dist/images/book-cover-not-available.6b5a104fa66be4eec4fd16aebd34fe04.png';
+    var coverImage = <div className="no-cover">
+       <p>No</p>
+       <p>Cover</p>
+       <p>Available</p>
+    </div>
   } else {
-    var cover = book.volumeInfo.imageLinks.thumbnail
+    var cover = book.volumeInfo.imageLinks.thumbnail;
+    var coverImage = <img src={cover}></img>
   }
   let title = book.volumeInfo.title;
   if (!title) {
@@ -55,7 +60,7 @@ const BookFromSearch = ({book, addBook, onShelf}) => {
   return (
     <div className="bookToAdd">
       <div className="col-1">
-        <img src={cover}></img>
+        {coverImage}
         {button}
       </div>
       <div className="col-2">
