@@ -7,10 +7,11 @@ const EditBook = ({book, show, onClose, editBookDetails}) => {
   const [format, setFormat] = useState(book.format);
   const [rating, setRating] = useState(book.rating);
 
+
   return (
     <>
-      <div className={`edit-book-status-modal ${show ? 'show' : ''}`} onClick={onClose}>
-        <div className="edit-book-status-modal-content" onClick={e => e.stopPropagation()}>
+      <div className={`modal ${show ? 'show' : ''}`} onClick={onClose}>
+        <div className="modal-content" onClick={e => e.stopPropagation()}>
           <div className="modal-header">
           <button
               onClick={onClose}

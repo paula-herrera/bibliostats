@@ -68,6 +68,7 @@ const App = () => {
     }
     axios.patch(`http://localhost:1313/api/editBookDetails/${id}`, update)
       .then((book) => setSelectedBook(book.data[0]))
+      .then(() => getAllBooks())
   }
 
   const editBookReview = (id, review) => {
@@ -76,6 +77,7 @@ const App = () => {
     }
     axios.patch(`http://localhost:1313/api/editBookReview/${id}`, update)
       .then((book) => setSelectedBook(book.data[0]))
+      .then(() => getAllBooks())
   }
 
   const editBookNotes = (id, notes) => {
@@ -84,6 +86,7 @@ const App = () => {
     }
     axios.patch(`http://localhost:1313/api/editBookNotes/${id}`, update)
       .then((book) => setSelectedBook(book.data[0]))
+      .then(() => getAllBooks())
   }
 
 
@@ -143,6 +146,15 @@ const App = () => {
         <div className="header">
           <div className="logo">BiblioStats</div>
           <div className="nav">
+            <div className="bookshelf-nav dropdown">
+              <div className="bookshelf-nav dropbtn" onClick={() => changeView('bookshelf')}>Bookshelf</div>
+              <div className="dropdown-content">
+                <div onClick={() => changeView('currentlyReading')}>Currently Reading</div>
+                <div onClick={() => changeView('read')}>Read</div>
+                <div onClick={() => changeView('tbr')}>To Be Read</div>
+                <div onClick={() => changeView('dnf')}>Did Not Finish</div>
+              </div>
+            </div>
             <div className="bookshelf-nav" onClick={() => changeView('bookshelf')}>Bookshelf</div>
             <div className="stats-nav">Stats</div>
             <div className="add-book-nav" onClick={() => changeView('addABook')}>Add A Book</div>
@@ -154,3 +166,12 @@ const App = () => {
 }
 
 export default App;
+
+<div class="dropdown">
+  <button class="dropbtn">Dropdown</button>
+  <div class="dropdown-content">
+    <a href="#">Link 1</a>
+    <a href="#">Link 2</a>
+    <a href="#">Link 3</a>
+  </div>
+</div>

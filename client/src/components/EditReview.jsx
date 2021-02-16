@@ -5,8 +5,8 @@ const EditReview = ({book, show, onClose, editBookReview}) => {
 
   return (
     <>
-      <div className={`edit-book-status-modal ${show ? 'show' : ''}`} onClick={onClose}>
-        <div className="edit-book-status-modal-content" onClick={e => e.stopPropagation()}>
+      <div className={`modal ${show ? 'show' : ''}`} onClick={onClose}>
+        <div className="modal-content" onClick={e => e.stopPropagation()}>
           <div className="modal-header">
           <button
               onClick={onClose}
@@ -19,7 +19,7 @@ const EditReview = ({book, show, onClose, editBookReview}) => {
               <div className="modal-row">
                 <div className="modal-input review">
                 <textarea id="review" name="review"
-                          rows="25" cols="47"
+                          rows="15" cols="55"
                           placeholder="My review...."
                           onChange={() => setReview(event.target.value)}>{book.review}
                 </textarea>
