@@ -428,6 +428,7 @@ Book Page
   color: #00adb5;
 }
 
+.book-page .description,
 .review,
 .notes {
   margin-top: 80px;

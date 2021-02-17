@@ -56,6 +56,17 @@ const BookPage = ({book, editBookDetails, editBookReview, editBookNotes, deleteB
     {rating}
   </div>
 
+  let description = <></>;
+  if (book.description === undefined) {
+    description = <div>
+      <p>No Description Available</p>
+    </div>
+  } else {
+    description = <div>
+      <p>{book.description}</p>
+    </div>
+  }
+
   let review = <></>
   if (book.review === '') {
     review = <div><p>Add a review</p></div>
@@ -99,6 +110,10 @@ const BookPage = ({book, editBookDetails, editBookReview, editBookNotes, deleteB
             </div>
         </div>
         <div className="row">
+        <div className="description">
+            <h2>Summary</h2>
+            {description}
+          </div>
           <div className="review">
             <h2>Review</h2>
             {review}
