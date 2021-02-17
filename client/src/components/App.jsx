@@ -29,14 +29,14 @@ const App = () => {
   }
 
   const getAllBooks = () => {
-    axios.get('http://localhost:5000/api/getBooks')
+    axios.get('bibliostats.herokuapp.com/api/getBooks')
       .then(results => {
         setAllBooks(results.data);
       })
   }
 
   const searchBooks = (query) => {
-    axios.get(`http://localhost:5000/api/search/${query}`)
+    axios.get(`bibliostats.herokuapp.com/api/search/${query}`)
       .then(results => setSearchResults(results.data))
       .catch(() => console.log('Coult not perform search'))
   }
@@ -57,7 +57,7 @@ const App = () => {
         };
       }
     }
-    axios.post('http://localhost:5000/api/addToShelf', bookToAdd)
+    axios.post('bibliostats.herokuapp.com:500/api/addToShelf', bookToAdd)
       .then(() => getAllBooks())
   }
 
@@ -69,7 +69,7 @@ const App = () => {
       format: format,
       rating: rating
     }
-    axios.patch(`http://localhost:5000/api/editBookDetails/${id}`, update)
+    axios.patch(`bibliostats.herokuapp.com/api/editBookDetails/${id}`, update)
       .then((book) => setSelectedBook(book.data[0]))
       .then(() => getAllBooks())
   }
@@ -78,7 +78,7 @@ const App = () => {
     const update = {
       review: review,
     }
-    axios.patch(`http://localhost:5000/api/editBookReview/${id}`, update)
+    axios.patch(`bibliostats.herokuapp.com/api/editBookReview/${id}`, update)
       .then((book) => setSelectedBook(book.data[0]))
       .then(() => getAllBooks())
   }
@@ -87,13 +87,13 @@ const App = () => {
     const update = {
       notes: notes,
     }
-    axios.patch(`http://localhost:5000/api/editBookNotes/${id}`, update)
+    axios.patch(`bibliostats.herokuapp.com/api/editBookNotes/${id}`, update)
       .then((book) => setSelectedBook(book.data[0]))
       .then(() => getAllBooks())
   }
 
   const deleteBook = (id) => {
-    axios.delete(`http://localhost:5000/api/deleteBook/${id}`)
+    axios.delete(`bibliostats.herokuapp.com/api/deleteBook/${id}`)
       .then(() => setActiveView(prevView))
       .then(() => getAllBooks())
   }

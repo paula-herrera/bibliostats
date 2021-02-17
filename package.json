@@ -2,7 +2,7 @@
   "name": "bibliostats",
   "version": "1.0.0",
   "description": "",
-  "main": "client/src/index.js",
+  "main": "index.js",
   "engines": {
     "node": "14.x"
   },
