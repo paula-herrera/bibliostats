@@ -25,7 +25,7 @@ const Bookshelf = ({allBooks, changeView, goToBookPage}) => {
   //Read Shelf
   let readBooks = allBooks.filter(book => book.status === 'Read');
   readBooks.sort(function(a,b){
-    return new Date(b.dateAdded) - new Date(a.dateAdded);
+    return new Date(b.dateFinished) - new Date(a.dateFinished);
   })
   let readShelf = <></>;
   if (readBooks.length === 0) {
