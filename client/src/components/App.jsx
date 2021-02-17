@@ -69,7 +69,7 @@ const App = () => {
       format: format,
       rating: rating
     }
-    axios.patch(`bibliostats.herokuapp.com/api/editBookDetails/${id}`, update)
+    axios.patch(`/api/editBookDetails/${id}`, update)
       .then((book) => setSelectedBook(book.data[0]))
       .then(() => getAllBooks())
   }
