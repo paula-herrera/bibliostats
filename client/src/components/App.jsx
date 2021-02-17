@@ -36,7 +36,7 @@ const App = () => {
   }
 
   const searchBooks = (query) => {
-    axios.get(`bibliostats.herokuapp.com/api/search/${query}`)
+    axios.get(`/api/search/${query}`)
       .then(results => setSearchResults(results.data))
       .catch(() => console.log('Coult not perform search'))
   }
@@ -57,7 +57,7 @@ const App = () => {
         };
       }
     }
-    axios.post('bibliostats.herokuapp.com:500/api/addToShelf', bookToAdd)
+    axios.post('/api/addToShelf', bookToAdd)
       .then(() => getAllBooks())
   }
 
@@ -78,7 +78,7 @@ const App = () => {
     const update = {
       review: review,
     }
-    axios.patch(`bibliostats.herokuapp.com/api/editBookReview/${id}`, update)
+    axios.patch(`/api/editBookReview/${id}`, update)
       .then((book) => setSelectedBook(book.data[0]))
       .then(() => getAllBooks())
   }
@@ -87,13 +87,13 @@ const App = () => {
     const update = {
       notes: notes,
     }
-    axios.patch(`bibliostats.herokuapp.com/api/editBookNotes/${id}`, update)
+    axios.patch(`/api/editBookNotes/${id}`, update)
       .then((book) => setSelectedBook(book.data[0]))
       .then(() => getAllBooks())
   }
 
   const deleteBook = (id) => {
-    axios.delete(`bibliostats.herokuapp.com/api/deleteBook/${id}`)
+    axios.delete(`/api/deleteBook/${id}`)
       .then(() => setActiveView(prevView))
       .then(() => getAllBooks())
   }
