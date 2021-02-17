@@ -1,3 +1,3 @@
-const API_KEY = 'AIzaSyDKnV750pgyOZ0relHsclouBRLEx8bhxJk';
+const API_KEY = 'AIzaSyCmkrbHJDQR4geRKPMNL7W2BUg3sS5ALtI';
 
 exports.API_KEY = API_KEY;

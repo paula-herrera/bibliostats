@@ -16,7 +16,7 @@ const AddABook = ({searchBooks, searchResults, addBook, allBooks}) => {
             onChange={(e) => setQuery(e.target.value)}
           ></input>
           <button
-            onClick={(e) => searchBooks(query)}
+            onClick={() => searchBooks(query)}
           >
             Search
           </button>
