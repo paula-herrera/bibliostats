@@ -29,7 +29,7 @@ const App = () => {
   }
 
   const getAllBooks = () => {
-    axios.get('bibliostats.herokuapp.com/api/getBooks')
+    axios.get('/api/getBooks')
       .then(results => {
         setAllBooks(results.data);
       })
