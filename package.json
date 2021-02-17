@@ -2,10 +2,13 @@
   "name": "bibliostats",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "client/src/index.js",
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
-    "build": "webpack --watch",
     "start": "nodemon server/index.js",
+    "build": "webpack --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
