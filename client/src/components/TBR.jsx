@@ -13,12 +13,6 @@ const TBR = ({books, goToBookPage}) => {
       if(a.title > b.title) {return 1;}
       return 0;
     })
-  } else if (filter === 'rating') {
-    books.sort(function(a,b) {
-      if(a.rating < b.rating) {return -1;}
-      if(a.rating > b.rating) {return 1;}
-      return 0;
-    })
   }
 
   let body = <></>

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import SearchResults from './SearchResults.jsx';
 
 const AddABook = ({searchBooks, searchResults, addBook, allBooks}) => {
+  const [query, setQuery] = useState('');
+
   return (
     <div className="addABook">
       <h1>Add A Book</h1>
@@ -11,8 +13,13 @@ const AddABook = ({searchBooks, searchResults, addBook, allBooks}) => {
             id="search"
             type="text"
             placeholder="Search"
-            onChange={(e) => searchBooks(e.target.value)}
+            onChange={(e) => setQuery(e.target.value)}
           ></input>
+          <button
+            onClick={() => searchBooks(query)}
+          >
+            Search
+          </button>
         </div>
         <SearchResults
           searchResults={searchResults}

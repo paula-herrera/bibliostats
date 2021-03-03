@@ -29,14 +29,14 @@ const App = () => {
   }
 
   const getAllBooks = () => {
-    axios.get('http://localhost:1313/api/getBooks')
+    axios.get('/api/getBooks')
       .then(results => {
         setAllBooks(results.data);
       })
   }
 
   const searchBooks = (query) => {
-    axios.get(`http://localhost:1313/api/search/${query}`)
+    axios.get(`/api/search/${query}`)
       .then(results => setSearchResults(results.data))
       .catch(() => console.log('Coult not perform search'))
   }
@@ -57,7 +57,7 @@ const App = () => {
         };
       }
     }
-    axios.post('http://localhost:1313/api/addToShelf', bookToAdd)
+    axios.post('/api/addToShelf', bookToAdd)
       .then(() => getAllBooks())
   }
 
@@ -69,7 +69,7 @@ const App = () => {
       format: format,
       rating: rating
     }
-    axios.patch(`http://localhost:1313/api/editBookDetails/${id}`, update)
+    axios.patch(`/api/editBookDetails/${id}`, update)
       .then((book) => setSelectedBook(book.data[0]))
       .then(() => getAllBooks())
   }
@@ -78,7 +78,7 @@ const App = () => {
     const update = {
       review: review,
     }
-    axios.patch(`http://localhost:1313/api/editBookReview/${id}`, update)
+    axios.patch(`/api/editBookReview/${id}`, update)
       .then((book) => setSelectedBook(book.data[0]))
       .then(() => getAllBooks())
   }
@@ -87,13 +87,13 @@ const App = () => {
     const update = {
       notes: notes,
     }
-    axios.patch(`http://localhost:1313/api/editBookNotes/${id}`, update)
+    axios.patch(`/api/editBookNotes/${id}`, update)
       .then((book) => setSelectedBook(book.data[0]))
       .then(() => getAllBooks())
   }
 
   const deleteBook = (id) => {
-    axios.delete(`http://localhost:1313/api/deleteBook/${id}`)
+    axios.delete(`/api/deleteBook/${id}`)
       .then(() => setActiveView(prevView))
       .then(() => getAllBooks())
   }
