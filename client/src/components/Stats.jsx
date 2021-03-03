@@ -5,7 +5,11 @@ const Stats= ({allBooks}) => {
   const dnfBooks = allBooks.filter(book => book.status === 'Did Not Finish');
 
   let pagesRead = 0;
-  readBooks.map(book => pagesRead += book.pages);
+  readBooks.map(book => {
+    if (book.pages !== undefined) {
+      pagesRead += book.pages
+    }
+  });
   let averageRating = 0;
   readBooks.map(book => averageRating += book.rating);
   averageRating = averageRating / readBooks.length;
@@ -30,7 +34,7 @@ const Stats= ({allBooks}) => {
             <p>{pagesRead} Pages Read</p>
           </div>
           <div className="average-rating">
-            <p>{averageRating}/5 Average Rating</p>
+            <p>{String(averageRating).substr(0, 4)}/5 Average Rating</p>
           </div>
         </div>
         <div>

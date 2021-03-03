@@ -2,12 +2,16 @@
   "name": "bibliostats",
   "version": "1.0.0",
   "description": "",
-  "main": "client/src/index.js",
+  "main": "index.js",
   "engines": {
     "node": "14.x"
   },
   "scripts": {
+<<<<<<< HEAD
     "start": "nodemon server/index.js",
+=======
+    "start": "node server/index.js",
+>>>>>>> fccb26a4c921f5672bae23853d48aa9bd7d1f895
     "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

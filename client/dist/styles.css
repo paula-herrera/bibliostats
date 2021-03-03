@@ -331,7 +331,7 @@ Book Card
   flex-direction: row;
   align-items: flex-start;
   margin-bottom: 25px;
-  margin-right: 25px;
+  margin-right: 20px;
   width: auto;
   height: 100%;
   background-color: white;
@@ -428,6 +428,7 @@ Book Page
   color: #00adb5;
 }
 
+.book-page .description,
 .review,
 .notes {
   margin-top: 80px;
